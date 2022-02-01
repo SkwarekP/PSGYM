@@ -1,0 +1,8 @@
+.containerFluid {
+    font-size: calc(6px + 6 * ((100vw - 320px) / 680));
+    height: 100vh;
+    overflow: hidden;
+    background: url("../../Assets/images/tlo2.jpg");
+    background-size: cover;
+    font-family: Roboto;
+}

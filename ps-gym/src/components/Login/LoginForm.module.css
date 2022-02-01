@@ -1,0 +1,33 @@
+.center {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+}
+
+.card {
+    background: #231F20;
+    border-radius: 20px;
+    padding: 30px;
+    width: 50rem;
+    height: auto;
+    opacity: 0.7;
+}
+
+.btnLog {
+    width: 10rem;
+    height: 3rem;
+    color: white;
+    background: black;
+    border: none;
+    border-radius: 15px;
+    font-size: 17px;
+}
+
+.btnLog:hover {
+    font-size: large;
+    font-weight: 800;
+    height: 3.2rem;
+    width: 10.2rem;
+}
+
