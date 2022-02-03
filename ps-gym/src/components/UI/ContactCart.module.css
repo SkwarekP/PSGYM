@@ -1,0 +1,29 @@
+.cartContact {
+    text-align: center;
+    margin: 5px;
+}
+
+p {
+    font-weight: 600;
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+.contactButton {
+    width: 125px;
+    height: 40px;
+    background: brown;
+    border-radius: 30px;
+    border: 0;
+    color: white;
+    margin: 5px;
+}
+
+.contactButton:hover {
+    font-size: large;
+    font-weight: 600;
+    background: saddlebrown;
+}

@@ -1,0 +1,54 @@
+.sidebarMenuContainer {
+    /* background: rgba(0, 0, 0, 0.9); */
+
+    background: #231F20;
+    opacity: 0.9;
+    background-position: center; /* Center the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    padding-top: 20px;
+    height: 100vh;
+    direction: rtl;
+}
+
+.sidebarCnt {
+    direction: ltr;
+}
+
+.lineHr,
+.sidebar-menu-wrapper,
+a {
+    z-index: 2;
+}
+
+.sidebarProfileContainer .sidebar-your-role {
+    color: white;
+
+    font-style: oblique;
+    z-index: 2;
+}
+
+.sidebarProfileImg {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebarProfileImg img {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.sidebarYourName {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+}
+
+.line_hr {
+    background-color: white;
+    margin: 0;
+}

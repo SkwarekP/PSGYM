@@ -1,0 +1,73 @@
+.sidebarMenuWrapper {
+    padding: 0;
+
+    list-style-type: none;
+}
+
+.sidebarMenuWrapper .sidebarMenuItem a {
+    text-decoration: none;
+    font-size: calc(4px + 6 * ((100vw - 320px) / 680));
+    color: white;
+    font-weight: lighter;
+    padding-left: calc(15px + 6 * ((100vw - 320px) / 680));
+    padding-right: calc(15px + 6 * ((100vw - 320px) / 680));
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition: all 0.4s;
+    white-space: nowrap;
+    display: flex;
+}
+
+.sidebarMenuWrapper .sidebarMenuItem a:hover {
+    font-size: large;
+}
+
+.sidebarMenuItem .active {
+    background-color: brown;
+    border-radius: 10px;
+}
+
+.sidebarMenuWrapper li:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.sidebarMenuWrapper li:last-child {
+    margin-top: 25px;
+}
+
+.sidebarMenuWrapper .sidebarMenuItem a:hover .ikona_menu {
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 1250px) {
+    .sidebarMenuWrapper .sidebarMenuItem {
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+    }
+}
+
+@media screen and (max-height: 330px) and (max-width: 600px) {
+    .sidebarMenuWrapper .sidebarMenuItem a {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .ikona_menu {
+        font-size: 15px;
+    }
+
+    .sidebarMenuItem {
+        margin: 0 !important;
+    }
+
+    .sidebarMenuItem a {
+        font-size: 15px !important;
+    }
+
+    .container-fluid {
+        font-size: 15px !important;
+    }
+}
