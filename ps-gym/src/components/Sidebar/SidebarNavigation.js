@@ -13,7 +13,7 @@ function SidebarNavigation() {
                 </li>
                 <li className={classes.sidebarMenuItem}>
                     <Link to="/">
-                        <p className="m-auto">Zakladka 1</p>
+                        <p className="m-auto">Usługi</p>
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>

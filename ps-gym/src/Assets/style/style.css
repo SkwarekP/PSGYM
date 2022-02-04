@@ -1,0 +1,18 @@
+.calendar {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.card {
+    border-radius: 20px;
+    background-color: #CBC5C4;
+    opacity: 0.9;
+}
+
+.container-fluid {
+    font-size: calc(6px + 6 * ((100vw - 320px) / 680));
+    height: 100vh;
+    font-family: "Roboto";
+}

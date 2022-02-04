@@ -1,5 +1,10 @@
+	
+		Client.
 	1.Biblioteka React js pozwalająca na napisanie aplikacji po stronie klienta w modelu Single Page Application
 		1.1 - React hooks: useState, useUffect, useContext, useNavigate
 		1.2 - Biblioteka react-dom: React Router, React Portals, React Links
 	2.Bootstrap framework do stylizacji layoutu aplikacji, służący również do zadbania o responsywność aplikacji.
 	3.Css wykorzystywany w celu stylizacji aplikacji.
+	4.React material
+
+		Server

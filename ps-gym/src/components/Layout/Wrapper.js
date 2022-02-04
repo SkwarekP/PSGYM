@@ -5,6 +5,7 @@ function Wrapper(props) {
         <div className={classes.containerFluid}>
             {props.children}
         </div>
+
     );
 
 }
