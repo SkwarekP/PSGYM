@@ -8,11 +8,10 @@
     text-decoration: none;
     font-size: calc(4px + 6 * ((100vw - 320px) / 680));
     color: white;
-    font-weight: lighter;
     padding-left: calc(15px + 6 * ((100vw - 320px) / 680));
     padding-right: calc(15px + 6 * ((100vw - 320px) / 680));
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     transition: all 0.4s;
     white-space: nowrap;
     display: flex;

@@ -6,8 +6,8 @@
     background-position: center; /* Center the image */
     background-size: cover; /* Resize the background image to cover the entire container */
     padding-top: 20px;
-    height: 100vh;
     direction: rtl;
+    height: 100vh;
 }
 
 .sidebarCnt {
@@ -38,13 +38,14 @@ a {
 .sidebarProfileImg img {
     object-fit: cover;
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 85px;
+    width: 85px;
 }
 
 .sidebarYourName {
     color: white;
     font-weight: 300;
+    font-size: calc(4px + 6 * ((100vw - 320px) / 680));
     text-align: center;
 }
 

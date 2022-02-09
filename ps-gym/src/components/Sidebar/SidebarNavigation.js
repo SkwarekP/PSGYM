@@ -7,8 +7,18 @@ function SidebarNavigation() {
         <header>
             <ul className={classes.sidebarMenuWrapper}>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/" className={classes.active}>
+                    <Link to="/PSGYM" className={classes.active}>
                         <p className="m-auto">PS&GYM</p>
+                    </Link>
+                </li>
+                <li className={classes.sidebarMenuItem}>
+                    <Link to="/Clients">
+                        <p className="m-auto">Klienci</p>
+                    </Link>
+                </li>
+                <li className={classes.sidebarMenuItem}>
+                    <Link to="/Equipment">
+                        <p className="m-auto">Sprzęt</p>
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>
@@ -18,17 +28,17 @@ function SidebarNavigation() {
                 </li>
                 <li className={classes.sidebarMenuItem}>
                     <Link to="/">
-                        <p className="m-auto">Klienci</p>
-                    </Link>
-                </li>
-                <li className={classes.sidebarMenuItem}>
-                    <Link to="/">
                         <p className="m-auto">Wydarzenia</p>
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/">
-                        <p className="m-auto">Asortyment</p>
+                    <Link to="/Supplements">
+                        <p className="m-auto">Suplementy</p>
+                    </Link>
+                </li>
+                <li className={classes.sidebarMenuItem}>
+                    <Link to="/Settings">
+                        <p className="m-auto">Ustawienia konta</p>
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>

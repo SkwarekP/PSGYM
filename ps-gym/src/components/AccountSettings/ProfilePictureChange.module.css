@@ -1,0 +1,27 @@
+.sidebarProfileImg {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebarProfileImg img {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+}
+
+input[type=file]::file-selector-button {
+    background-Color: brown;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    letter-spacing: 0.02857em;
+    line-height: 1.24;
+    border: 0;
+    min-width: 64px;
+    padding: 6px 16px;
+    justify-content: center;
+}

@@ -1,0 +1,48 @@
+.wrapper_searchbox {
+    position: relative;
+    display: inline-block;
+    max-width: 220px;
+    min-width: 130px;
+}
+
+.wrapper_searchbox input {
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1em;
+    box-sizing: border-box;
+    color: white;
+    font-size: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #797979;
+
+}
+
+
+.wrapper_searchbox input:focus + .underline {
+
+    width: 100%;
+
+}
+
+.wrapper_searchbox .underline {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    height: 2px;
+
+    width: 0;
+
+    background-color: brown;
+
+    transition: 0.5s;
+
+}

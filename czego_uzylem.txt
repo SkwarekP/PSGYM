@@ -8,3 +8,22 @@
 	4.React material
 
 		Server
+
+
+
+
+
+Pytania
+
+-Co powinno znaleźć się w spisie treści,
+-Czego potrzebuje oprócz aplikacji,
+-Star UML?
+-Czy funkcjonalność aplikacji jest wystarczająca?
+-Zakres aplikacji ?
+-Zakres współpracy
+-plik docx. Spis treści itp
+-terminy obrony, termin oddania pracy
+
+
+
+

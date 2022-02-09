@@ -1,11 +1,11 @@
 import classes from "./Wrapper.module.css"
+import {Container} from "react-bootstrap";
 
 function Wrapper(props) {
     return (
-        <div className={classes.containerFluid}>
+        <Container fluid className={classes.containerFluid}>
             {props.children}
-        </div>
-
+        </Container>
     );
 
 }

@@ -1,13 +1,21 @@
 .reactCalendar {
     height: inherit;
     background: #CBC5C4;
-    opacity: 0.6;
+    opacity: 0.8;
     border: 2px solid black;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
     /*margin-top: 10px;
     margin-left: -10px;*/
 
+}
+
+.calendar {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    float: right;
+    position: absolute;
 }
 
 .react-calendar--doubleView {

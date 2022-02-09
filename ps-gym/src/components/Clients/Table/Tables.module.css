@@ -1,0 +1,4 @@
+header {
+    font-size: calc(12px + 6 * ((100vw - 320px) / 680));
+    font-weight: 700;
+}
