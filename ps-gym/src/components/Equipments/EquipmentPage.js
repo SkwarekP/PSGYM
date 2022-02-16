@@ -16,23 +16,33 @@ function EquipmentPage(props) {
 
     const [equipment, setEquipment] = useState([
         {
+            id: 1,
             title: "Maszyny",
+            navigate: "Machines",
             photo: machines
         },
         {
+            id: 2,
             title: "Obciążenia",
+            navigate: "Loads",
             photo: loads,
         },
         {
+            id: 3,
             title: "Hantle",
+            navigate: "Dumbells",
             photo: dumbbells,
         },
         {
+            id: 4,
             title: "Sztangi",
+            navigate: "Barbells",
             photo: barbells,
         },
         {
+            id: 5,
             title: "Pozostałe",
+            navigate: "other",
             photo: others
         }
     ])
@@ -44,7 +54,7 @@ function EquipmentPage(props) {
     const closeModalCart = () => {
         setIsCartShow(() => false)
     }
-    
+
 
     return (
         <Row>
@@ -52,7 +62,6 @@ function EquipmentPage(props) {
             <NavbarLayout onShowContact={showModalCart}/>
             <SidebarLayout/>
             <Col xs={10} lg={10} className="pageWrapper mt-4">
-
                 <EquipmentList equipment={equipment}/>
             </Col>
 

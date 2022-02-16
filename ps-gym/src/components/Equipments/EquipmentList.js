@@ -8,7 +8,8 @@ function EquipmentList(props) {
             <Row>
                 <CardGroup>
                     {props.equipment.map((item) => (
-                        <EquipmentItem key={Math.random()} title={item.title} photo={item.photo}/>
+                        <EquipmentItem key={item.id} title={item.title} photo={item.photo} id={item.id}
+                                       path={item.navigate}/>
                     ))}
                 </CardGroup>
             </Row>
