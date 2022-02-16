@@ -1,0 +1,19 @@
+label {
+    text-align: center;
+    font-weight: 700;
+    margin: auto;
+    font-size: calc(4px + 6 * ((100vw - 320px) / 680));
+}
+
+.center {
+    text-align: center;
+    padding: 10px;
+}
+
+.ClientCard {
+    border-radius: 20px;
+    background-color: #CBC5C4;
+    opacity: 0.9;
+    width: auto;
+}
+

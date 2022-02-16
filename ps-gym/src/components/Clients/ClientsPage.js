@@ -2,205 +2,19 @@ import {Col, Row} from "react-bootstrap";
 import ContactCart from "../UI/ContactCart";
 import NavbarLayout from "../Layout/NavbarLayout";
 import SidebarLayout from "../Layout/SidebarLayout";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Searchbox from "../UI/Searchbox";
-import RegularClientsTable from "./Table/RegularClientsTable";
-import MemberPSGYMClients from "./Table/MemberPSGYMClients";
-import OthersClientsTable from "./Table/OthersClientsTable";
+import ClientsTable from "./Table/ClientsTable";
+import RegisterClientForm from "./RegisterClientForm";
+import EditClient from "./EditClient";
 
 function ClientsPage() {
     const [isCartShow, setIsCartShow] = useState(false)
-
-    const [regularClients, setRegularClients] = useState([
-        {
-            name: "Patryk",
-            lastName: "Skwara",
-            adres: "Ul. Kościuszki 155",
-            email: "patryk.skwara750@gmail.com",
-            nr_tel: 511973560,
-            nr_karty_magnetycznej: 10001,
-            data_utworzenia: "10-10-2022"
-        },
-        {
-            name: "Patryk",
-            lastName: "Skwara",
-            adres: "Ul. Kościuszki 155",
-            email: "patryk.skwara750@gmail.com",
-            nr_tel: 511973560,
-            nr_karty_magnetycznej: 10001,
-            data_utworzenia: "10-10-2022"
-        },
-        {
-            name: "Patryk",
-            lastName: "Skwara",
-            adres: "Ul. Kościuszki 155",
-            email: "patryk.skwara750@gmail.com",
-            nr_tel: 511973560,
-            nr_karty_magnetycznej: 10001,
-            data_utworzenia: "10-10-2022"
-        },
-        {
-            name: "Patryk",
-            lastName: "Skwara",
-            adres: "Ul. Kościuszki 155",
-            email: "patryk.skwara750@gmail.com",
-            nr_tel: 511973560,
-            nr_karty_magnetycznej: 10001,
-            data_utworzenia: "10-10-2022"
-        },
-        {
-            name: "Patryk",
-            lastName: "Skwara",
-            adres: "Ul. Kościuszki 155",
-            email: "patryk.skwara750@gmail.com",
-            nr_tel: 511973560,
-            nr_karty_magnetycznej: 10001,
-            data_utworzenia: "10-10-2022"
-        },
-        {
-            name: "Patryk",
-            lastName: "Skwara",
-            adres: "Ul. Kościuszki 155",
-            email: "patryk.skwara750@gmail.com",
-            nr_tel: 511973560,
-            nr_karty_magnetycznej: 10001,
-            data_utworzenia: "10-10-2022"
-        },
-    ])
-    const [membersClients, setMembersClients] = useState([
-        {
-            name: "Sebastian",
-            lastName: "Biernacki",
-            adres: "Ul. Kłobucka 222",
-            email: "Sebastian.Biernacki@gmail.com",
-            nr_tel: 666222333,
-            nr_karty_magnetycznej: 10002,
-            data_utworzenia: "11-10-2022"
-        },
-        {
-            name: "Sebastian",
-            lastName: "Biernacki",
-            adres: "Ul. Kłobucka 222",
-            email: "Sebastian.Biernacki@gmail.com",
-            nr_tel: 666222333,
-            nr_karty_magnetycznej: 10002,
-            data_utworzenia: "11-10-2022"
-        },
-        {
-            name: "Sebastian",
-            lastName: "Biernacki",
-            adres: "Ul. Kłobucka 222",
-            email: "Sebastian.Biernacki@gmail.com",
-            nr_tel: 666222333,
-            nr_karty_magnetycznej: 10002,
-            data_utworzenia: "11-10-2022"
-        },
-        {
-            name: "Sebastian",
-            lastName: "Biernacki",
-            adres: "Ul. Kłobucka 222",
-            email: "Sebastian.Biernacki@gmail.com",
-            nr_tel: 666222333,
-            nr_karty_magnetycznej: 10002,
-            data_utworzenia: "11-10-2022"
-        },
-        {
-            name: "Sebastian",
-            lastName: "Biernacki",
-            adres: "Ul. Kłobucka 222",
-            email: "Sebastian.Biernacki@gmail.com",
-            nr_tel: 666222333,
-            nr_karty_magnetycznej: 10002,
-            data_utworzenia: "11-10-2022"
-        },
-    ])
-    const [otherClients, setOtherClients] = useState([
-        {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        },
-        {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        },
-        {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        },
-        {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        }, {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        }, {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        }, {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        }, {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        }, {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        }, {
-            name: "Ania",
-            lastName: "Zagalska",
-            adres: "Ul. Kościuszki 78",
-            email: "AniaZagalska@gmail.com",
-            nr_tel: 997997997,
-            nr_karty_magnetycznej: 10003,
-            data_utworzenia: "12-10-2022"
-        },
-
-    ])
+    const [isFormShow, setIsFormShow] = useState(false);
+    const [isEditModalFormShow, setIsEditModalFormShow] = useState(false);
+    const [searchUsers, setSearchUsers] = useState("");
+    const [clients, setClients] = useState([])
+    const [tempClient, setTempClient] = useState({})
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -210,38 +24,94 @@ function ClientsPage() {
         setIsCartShow(() => false)
     }
 
+    const showForm = () => {
+        setIsFormShow(() => true);
+    }
+
+    const closeForm = () => {
+        setIsFormShow(() => false);
+    }
+    const showEditModalForm = () => {
+        setIsEditModalFormShow(() => true)
+    }
+    const closeEditModalForm = () => {
+        setIsEditModalFormShow(() => false)
+    }
+
+    const searchByEmail = data => {
+        setSearchUsers(() => data);
+    }
+
+    const newClientAdd = (data) => {
+        fetch("http://localhost:5000/clients", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                Accept: "application/form-data",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then((response) => setClients((prev) => [...prev, response]))
+
+        setIsFormShow(() => false);
+    }
+
+    const editClientHandler = data => {
+        fetch(`http://localhost:5000/clients/${data._id}`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+            .then(res => res.json())
+            .then(res => {
+                setClients((prev) => prev.map((item) => item._id === res._id ? res : item))
+                setIsEditModalFormShow(() => false)
+            })
+    }
+
+    useEffect(() => {
+        fetch("http://localhost:5000/clients", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => setClients(() => data))
+    }, [])
+
+
     return (
         <Row>
             {isCartShow && <ContactCart onClose={closeModalCart}/>}
             <NavbarLayout onShowContact={showModalCart}/>
             <SidebarLayout/>
             <Col xs={10} lg={10} className="pageWrapper">
-                <Col lg={10} className="clientsPage">
+                <Col lg={12} className="clientsPage">
                     <Row className="m-5">
-                        <Col xs={6} className="mt-2">
-                            <button className="redBtn text-nowrap">Zarejestruj klienta</button>
+                        <Col xs={3} className="mt-2">
+                            <button className="redBtn text-nowrap" onClick={showForm}>Zarejestruj klienta</button>
                         </Col>
-                        <Col xs={6} className="mt-3 text-center">
-                            <Searchbox/>
+                        <Col xs={3} className="mt-3">
+                            <Searchbox onReceive={searchByEmail}/>
                         </Col>
                     </Row>
-
-                    <Row className="m-5">
-                        <RegularClientsTable regularUsers={regularClients}/>
-                    </Row>
-
-                    <Row className="m-5">
-                        <MemberPSGYMClients membersUsers={membersClients}/>
-                    </Row>
-
-                    <Row className="m-5">
-                        <OthersClientsTable users={otherClients}/>
-                    </Row>
-
+                    <ClientsTable
+                        clients={clients}
+                        searchUsers={searchUsers}
+                        onShowEdit={showEditModalForm}
+                        onClose={closeEditModalForm}
+                        setTempClient={setTempClient}
+                    />
+                    {isFormShow && <RegisterClientForm onClose={closeForm} onRegistered={newClientAdd}/>}
+                    {isEditModalFormShow && <EditClient client={tempClient} onClose={closeEditModalForm}
+                                                        editedClientData={editClientHandler}/>}
                 </Col>
 
             </Col>
-
 
         </Row>
 

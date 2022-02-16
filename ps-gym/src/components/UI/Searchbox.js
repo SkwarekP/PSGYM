@@ -1,10 +1,10 @@
 import classes from './Searchbox.module.css'
 
-function Searchbox() {
+function Searchbox(props) {
 
     return (
         <div className={classes.wrapper_searchbox}>
-            <input type="text" placeholder="Wyszukaj"/>
+            <input type="text" placeholder="@email..." onChange={(event) => props.onReceive(event.target.value)}/>
             <span className={classes.underline}/>
         </div>
     )

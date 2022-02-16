@@ -16,6 +16,19 @@ function MainPage() {
         setIsCartShow(() => false)
     }
 
+    /*useEffect(() => {
+        fetch("http://localhost:5000/Clients", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setClients(data)
+            })
+    }, [])*/
+
 
     return (
         <Row>
@@ -25,8 +38,9 @@ function MainPage() {
             <Col xs={10} lg={10} className="d-flex pageWrapper page">
                 <Col lg={10}>
                     <Card className="m-4 cardIntro">
-                        <h1 className="text-center">Statystyki </h1>
+                        <h1 className="text-center">Statystyki
 
+                        </h1>
                     </Card>
 
                 </Col>
