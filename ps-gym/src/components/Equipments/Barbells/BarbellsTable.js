@@ -1,7 +1,7 @@
 import classes from "../../Clients/Table/Tables.module.css";
 import {Card, Table} from "react-bootstrap";
 
-function BarbellsTable() {
+function BarbellsTable(props) {
 
     return (
         <Card className={classes.ClientCard}>
@@ -22,18 +22,20 @@ function BarbellsTable() {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>zdjecie</td>
-                    <td>Hess</td>
-                    <td>Gryf</td>
-                    <td>5</td>
-                    <td>2kg</td>
-                    <td>20-02-2022</td>
-                    <td>
-                        <button className={classes.btnTable}>Edytuj</button>
-                    </td>
+                {props.barbells.map((barbell, idx) => (
+                    <tr key={barbell._id}>
+                        <td>{idx + 1}.</td>
+                        <td>{barbell.producent}</td>
+                        <td>{barbell.type}</td>
+                        <td>{barbell.amount} sztuk</td>
+                        <td>{barbell.weight}kg</td>
+                        <td>{barbell.date}</td>
+                        <td>
+                            <button className={classes.btnTable}>Edytuj</button>
+                        </td>
+                    </tr>
+                ))}
 
-                </tr>
                 </tbody>
             </Table>
         </Card>

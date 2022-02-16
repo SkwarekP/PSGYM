@@ -1,7 +1,7 @@
 import classes from "../../Clients/Table/Tables.module.css";
 import {Card, Table} from "react-bootstrap";
 
-function LoadsTable() {
+function LoadsTable(props) {
     return (
         <Card className={classes.ClientCard}>
             <div>
@@ -15,24 +15,27 @@ function LoadsTable() {
                     <th>Typ</th>
                     <th>Ilość</th>
                     <th>Waga</th>
+                    <th>Cena</th>
                     <th>Data zakupu</th>
                     <th/>
 
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>zdjecie</td>
-                    <td>Hess</td>
-                    <td>Gumowe</td>
-                    <td>20</td>
-                    <td>10 kg</td>
-                    <td>20-02-2015</td>
-                    <td>
-                        <button className={classes.btnTable}>Edytuj</button>
-                    </td>
-
-                </tr>
+                {props.loads.map((item, idx) => (
+                    <tr key={item._id}>
+                        <td>{idx + 1}</td>
+                        <td>{item.producent}</td>
+                        <td>{item.type}</td>
+                        <td>{item.amount} sztuk</td>
+                        <td>{item.weight}kg</td>
+                        <td>{item.price}zł</td>
+                        <td>{item.date}</td>
+                        <td>
+                            <button className={classes.btnTable}>Edytuj</button>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </Table>
         </Card>

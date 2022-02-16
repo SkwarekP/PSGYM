@@ -1,7 +1,7 @@
 import classes from "../Machines/MachinesTable.module.css"
 import {Card, Table} from "react-bootstrap";
 
-function DumbellsTable() {
+function DumbellsTable(props) {
 
     return (
         <Card className={classes.cardMachines}>
@@ -22,18 +22,19 @@ function DumbellsTable() {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>zdjecie</td>
-                    <td>Hess</td>
-                    <td>Gryf</td>
-                    <td>5</td>
-                    <td>2kg</td>
-                    <td>20-02-2022</td>
-                    <td>
-                        <button className={classes.btnTable}>Edytuj</button>
-                    </td>
-
-                </tr>
+                {props.dumbells.map((item, idx) => (
+                    <tr key={item._id}>
+                        <td>{idx + 1}</td>
+                        <td>{item.producent}</td>
+                        <td>{item.type}</td>
+                        <td>{item.amount}</td>
+                        <td>{item.weight}</td>
+                        <td>{item.date}</td>
+                        <td>
+                            <button className={classes.btnTable}>Edytuj</button>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </Table>
         </Card>

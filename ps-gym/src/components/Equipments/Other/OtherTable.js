@@ -1,7 +1,7 @@
 import classes from "../Machines/MachinesTable.module.css";
 import {Card, Table} from "react-bootstrap";
 
-function OtherTable() {
+function OtherTable(props) {
 
     return (
         <Card className={classes.cardMachines}>
@@ -22,18 +22,20 @@ function OtherTable() {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>zdjęcie</td>
-                    <td>Hess</td>
-                    <td>Guma rozciągliwa</td>
-                    <td>fitness</td>
-                    <td>4</td>
-                    <td>20-02-2022</td>
-                    <td>
-                        <button className={classes.btnTable}>Edytuj</button>
-                    </td>
+                {props.others.map((item, idx) => (
+                    <tr key={item._id}>
+                        <td>{idx + 1}.</td>
+                        <td>{item.producent}</td>
+                        <td>{item.name}</td>
+                        <td>{item.destination}</td>
+                        <td>{item.amount}</td>
+                        <td>{item.date}</td>
+                        <td>
+                            <button className={classes.btnTable}>Edytuj</button>
+                        </td>
+                    </tr>
+                ))}
 
-                </tr>
                 </tbody>
             </Table>
         </Card>

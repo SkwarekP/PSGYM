@@ -1,0 +1,43 @@
+const Others = require("../../Models/Equipment/Others")
+
+exports.getOthers = async (req, res) => {
+    Others.find()
+        .then(result => res.send(result))
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        })
+}
+
+exports.newOther = async (req, res) => {
+    const other = new Others({
+        producent: req.body.producent,
+        name: req.body.name,
+        destination: req.body.destination,
+        amount: req.body.amount,
+        date: req.body.date
+    });
+    other
+        .save()
+        .then(result => {
+            console.log(result);
+            res.status(201).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        })
+}
+
+exports.removeOther = async (req, res) => {
+    Others.deleteOne({otherId: req.params._id})
+        .then(result => res.send(result))
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        })
+}

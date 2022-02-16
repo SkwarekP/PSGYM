@@ -16,23 +16,26 @@ function MachinesTable(props) {
                     <th>Numer seryjny</th>
                     <th>Nazwa</th>
                     <th>Producent</th>
+                    <th>Cena</th>
                     <th>Data zakupu</th>
                     <th/>
 
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>zdjecie</td>
-                    <td>9</td>
-                    <td>8</td>
-                    <td>7</td>
-                    <td>6</td>
-                    <td>
-                        <button className={classes.btnTable}>Edytuj</button>
-                    </td>
-
-                </tr>
+                {props.machines.map((machine, idx) => (
+                    <tr key={machine._id}>
+                        <td>{idx + 1}.</td>
+                        <td>{machine.serial_number}</td>
+                        <td>{machine.name}</td>
+                        <td>{machine.producent}</td>
+                        <td>{machine.cena}zł</td>
+                        <td>{machine.date}</td>
+                        <td>
+                            <button className={classes.btnTable}>Edytuj</button>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </Table>
         </Card>
