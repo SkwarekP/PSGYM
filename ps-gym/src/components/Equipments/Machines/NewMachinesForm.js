@@ -5,22 +5,22 @@ import {useState} from "react";
 
 function NewMachinesForm(props) {
 
-    const [picture, setPicture] = useState(null)
-    const [serialNumber, setSerialNumber] = useState(0)
+    const [serialNumber, setSerialNumber] = useState("")
     const [name, setName] = useState("")
     const [producent, setProducent] = useState("")
+    const [price, setPrice] = useState(0)
     const [date, setDate] = useState("")
 
     const newMachineHandler = (e) => {
         e.preventDefault();
         const data = {
-            picture: picture,
             serial_number: serialNumber,
             name: name,
             producent: producent,
+            price: price,
             date: date,
         }
-        console.log(data);
+        props.onReceive(data)
     }
 
     return (
@@ -30,17 +30,6 @@ function NewMachinesForm(props) {
                     <Row>
                         <Col>
                             <FormGroup className={classes.center}>
-                                <label htmlFor="imie">Zdjęcie</label>
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="zdjecie"
-                                    onChange={(event) => {
-                                        setPicture(() => event.target.files[0])
-                                    }}
-                                />
-                            </FormGroup>
-                            <FormGroup className={classes.center}>
                                 <label htmlFor="model">Numer seryjny</label>
                                 <input
                                     type="text"
@@ -48,7 +37,7 @@ function NewMachinesForm(props) {
                                     name="nrSeryjny"
                                     value={serialNumber}
                                     onChange={(event) => {
-                                        setSerialNumber(() => +event.target.value)
+                                        setSerialNumber(() => event.target.value)
                                     }}
                                 />
                             </FormGroup>
@@ -61,6 +50,18 @@ function NewMachinesForm(props) {
                                     value={name}
                                     onChange={(event) => {
                                         setName(() => event.target.value)
+                                    }}
+                                />
+                            </FormGroup>
+                            <FormGroup className={classes.center}>
+                                <label htmlFor="cena">Cena</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    name="cena"
+                                    value={price}
+                                    onChange={(event) => {
+                                        setPrice(() => +event.target.value)
                                     }}
                                 />
                             </FormGroup>

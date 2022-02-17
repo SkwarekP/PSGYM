@@ -8,6 +8,7 @@ import NewDumbellsForm from "./NewDumbellsForm";
 
 function DumbellsPage() {
     const [isCartShow, setIsCartShow] = useState(false)
+    const [isModalShown, setIsModalShown] = useState(false);
     const [dumbells, setDumbells] = useState([])
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -18,10 +19,10 @@ function DumbellsPage() {
     }
 
     const showModalForm = () => {
-        setIsCartShow(() => true)
+        setIsModalShown(() => true)
     }
     const closeModalForm = () => {
-        setIsCartShow(() => false)
+        setIsModalShown(() => false)
     }
 
     useEffect(() => {
@@ -34,6 +35,19 @@ function DumbellsPage() {
             .then(res => res.json())
             .then(res => setDumbells(() => res))
     }, [])
+
+    const newDumbellHandler = (data) => {
+        fetch("http://localhost:5000/Dumbells", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setDumbells((prev) => [...prev, res]))
+        setIsModalShown(() => false)
+    }
     return (
         <Row>
             {isCartShow && <ContactCart onClose={closeModalCart}/>}
@@ -47,7 +61,7 @@ function DumbellsPage() {
                         </Col>
                     </Row>
                     <DumbellsTable dumbells={dumbells}/>
-                    {isCartShow && <NewDumbellsForm onClose={closeModalForm}/>}
+                    {isModalShown && <NewDumbellsForm onClose={closeModalForm} onReceive={newDumbellHandler}/>}
                 </Col>
 
             </Col>

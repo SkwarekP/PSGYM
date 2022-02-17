@@ -5,25 +5,25 @@ import {useState} from "react";
 
 function NewDumbellsForm(props) {
 
-    const [picture, setPicture] = useState(null)
     const [producent, setProducent] = useState("")
     const [type, setType] = useState("")
     const [weight, setWeight] = useState(2)
     const [amount, setAmount] = useState(1)
+    const [price, setPrice] = useState(0)
     const [date, setDate] = useState("")
 
     const newDumbellsHandler = (e) => {
         e.preventDefault();
 
         const data = {
-            picture: picture,
             producent: producent,
             type: type,
             weight: weight,
             amount: amount,
+            price: price,
             date: date
         }
-        console.log(data);
+        props.onReceive(data)
 
     }
 
@@ -33,17 +33,7 @@ function NewDumbellsForm(props) {
                 <form onSubmit={newDumbellsHandler}>
                     <Row>
                         <Col>
-                            <FormGroup className={classes.center}>
-                                <label htmlFor="zdjecie">Zdjęcie</label>
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="zdjecie"
-                                    onChange={(event) => {
-                                        setPicture(() => event.target.files[0])
-                                    }}
-                                />
-                            </FormGroup>
+
                             <FormGroup className={classes.center}>
                                 <label htmlFor="producent">Producent</label>
                                 <input
@@ -65,6 +55,18 @@ function NewDumbellsForm(props) {
                                     value={type}
                                     onChange={(event) => {
                                         setType(() => event.target.value)
+                                    }}
+                                />
+                            </FormGroup>
+                            <FormGroup className={classes.center}>
+                                <label htmlFor="price">cena</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    name="price"
+                                    value={price}
+                                    onChange={(event) => {
+                                        setPrice(() => +event.target.value)
                                     }}
                                 />
                             </FormGroup>

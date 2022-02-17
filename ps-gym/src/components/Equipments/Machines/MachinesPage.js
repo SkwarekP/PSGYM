@@ -9,6 +9,7 @@ import NewMachinesForm from "./NewMachinesForm";
 
 function MachinesPage() {
     const [isCartShow, setIsCartShow] = useState(false)
+    const [isModalShown, setIsModalShown] = useState(false)
     const [machines, setMachines] = useState([])
 
     const showModalCart = () => {
@@ -20,10 +21,10 @@ function MachinesPage() {
     }
 
     const showModalForm = () => {
-        setIsCartShow(() => true)
+        setIsModalShown(() => true)
     }
     const closeModalForm = () => {
-        setIsCartShow(() => false)
+        setIsModalShown(() => false)
     }
 
     useEffect(() => {
@@ -36,6 +37,18 @@ function MachinesPage() {
             .then(res => res.json())
             .then(res => setMachines(() => res))
     }, [])
+
+    const newMachineHandler = (data) => {
+        fetch("http://localhost:5000/Machines", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type":"application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setMachines((prev) => [...prev, res]))
+    }
     return (
         <Row>
             {isCartShow && <ContactCart onClose={closeModalCart}/>}
@@ -49,7 +62,7 @@ function MachinesPage() {
                         </Col>
                     </Row>
                     <MachinesTable machines={machines}/>
-                    {isCartShow && <NewMachinesForm onClose={closeModalForm}/>}
+                    {isModalShown && <NewMachinesForm onClose={closeModalForm} onReceive={newMachineHandler}/>}
                 </Col>
 
             </Col>

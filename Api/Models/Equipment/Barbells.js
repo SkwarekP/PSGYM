@@ -6,6 +6,7 @@ const barbellsSchema = mongoose.Schema({
     type: String,
     amount: Number,
     weight: Number,
+    price: Number,
     date: {
         immutable: true,
         type: String,

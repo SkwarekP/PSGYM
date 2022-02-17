@@ -1,5 +1,6 @@
 import {Button, Col, Container, Row} from "react-bootstrap";
-import classes from "./NavbarLayour.module.css"
+import classes from "./NavbarLayour.module.css";
+import Logo from "../../Assets/images/logo.png"
 
 function NavbarLayout(props) {
     return (
@@ -12,7 +13,7 @@ function NavbarLayout(props) {
                         </Button>
                     </Col>
                     <Col sm={8} className="text-white text-center">
-                        <h1 className="text-white"> PSGYM FITNESS CLUB</h1>
+                        <img src={Logo} alt="" className="mt-4"/>
                     </Col>
                     <Col sm={2} className="text-white text-center">
                         <Button className={classes.wrapperContact} onClick={props.onShowContact}>Kontakt</Button>

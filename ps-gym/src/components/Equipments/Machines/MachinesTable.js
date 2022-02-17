@@ -29,7 +29,7 @@ function MachinesTable(props) {
                         <td>{machine.serial_number}</td>
                         <td>{machine.name}</td>
                         <td>{machine.producent}</td>
-                        <td>{machine.cena}zł</td>
+                        <td>{machine.price}zł</td>
                         <td>{machine.date}</td>
                         <td>
                             <button className={classes.btnTable}>Edytuj</button>

@@ -6,6 +6,6 @@ router.get("/Barbells", barbellsController.getBarbells)
 
 router.post("/Barbells", barbellsController.newBarbell)
 
-router.delete("/Barbells/barbellId", barbellsController.removeBarbell)
+router.delete("/Barbells/:barbellId", barbellsController.removeBarbell)
 
 module.exports = router;

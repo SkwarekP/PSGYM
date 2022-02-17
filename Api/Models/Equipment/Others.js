@@ -6,6 +6,7 @@ const otherSchema = mongoose.Schema({
     name: String,
     destination: String,
     amount: Number,
+    price: Number,
     date: {
         immutable: true,
         type: String,

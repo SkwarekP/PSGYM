@@ -5,7 +5,7 @@ exports.newMachine = async (req, res) => {
         serial_number: req.body.serial_number,
         name: req.body.name,
         producent: req.body.producent,
-        cena: req.body.cena,
+        price: req.body.price,
         date: req.body.date
     });
     machine

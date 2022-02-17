@@ -3,7 +3,7 @@ import {Card, Table} from "react-bootstrap";
 
 function LoadsTable(props) {
     return (
-        <Card className={classes.ClientCard}>
+        <Card className={classes.cardMachines}>
             <div>
                 <header className={`${classes.header}`}>Obciążenia</header>
             </div>
@@ -15,7 +15,7 @@ function LoadsTable(props) {
                     <th>Typ</th>
                     <th>Ilość</th>
                     <th>Waga</th>
-                    <th>Cena</th>
+                    <th>Cena za sztukę</th>
                     <th>Data zakupu</th>
                     <th/>
 
@@ -27,7 +27,7 @@ function LoadsTable(props) {
                         <td>{idx + 1}</td>
                         <td>{item.producent}</td>
                         <td>{item.type}</td>
-                        <td>{item.amount} sztuk</td>
+                        <td>{item.amount} szt.</td>
                         <td>{item.weight}kg</td>
                         <td>{item.price}zł</td>
                         <td>{item.date}</td>

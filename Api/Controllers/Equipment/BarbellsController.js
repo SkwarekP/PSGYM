@@ -16,6 +16,7 @@ exports.newBarbell = async (req, res) => {
         type: req.body.type,
         amount: req.body.amount,
         weight: req.body.weight,
+        price: req.body.price,
         date: req.body.date
     });
     barbell
@@ -33,7 +34,7 @@ exports.newBarbell = async (req, res) => {
 }
 
 exports.removeBarbell = async (req, res) => {
-    Barbells.deleteOne({barbellId: req.params._id})
+    Barbells.deleteOne({_id: req.params.barbellId})
         .then(result => res.send(result))
         .catch(err => {
             res.status(500).json({

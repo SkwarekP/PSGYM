@@ -5,7 +5,7 @@ exports.newLoad = async (req, res) => {
         producent: req.body.producent,
         type: req.body.type,
         amount: req.body.amount,
-        weight: req.body.amount,
+        weight: req.body.weight,
         price: req.body.price,
         date: req.body.date
     });
@@ -34,7 +34,7 @@ exports.getLoads = async (req, res) => {
 }
 
 exports.removeLoad = async (req, res) => {
-    loads.deleteOne({loadId: req.params._id})
+    loads.deleteOne({_id: req.params.loadId})
         .then(result => {
             res.send(result)
         })

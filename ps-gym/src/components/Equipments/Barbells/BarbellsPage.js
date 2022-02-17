@@ -9,6 +9,7 @@ import NewBarbellForm from "./NewBarbellForm";
 function BarbellsPage() {
 
     const [isCartShow, setIsCartShow] = useState(false)
+    const [isModalShown, setIsModalShown] = useState(false)
     const [barbells, setBarbells] = useState([])
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -19,10 +20,10 @@ function BarbellsPage() {
     }
 
     const showModalForm = () => {
-        setIsCartShow(() => true)
+        setIsModalShown(() => true)
     }
     const closeModalForm = () => {
-        setIsCartShow(() => false)
+        setIsModalShown(() => false)
     }
 
     useEffect(() => {
@@ -35,6 +36,18 @@ function BarbellsPage() {
             .then(res => res.json())
             .then(res => setBarbells(() => res))
     }, [])
+
+    const newBarbellHandler = (data) => {
+        fetch("http://localhost:5000/Barbells", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setBarbells((prev) => [...prev, res]))
+    }
 
     return (
         <Row>
@@ -49,7 +62,7 @@ function BarbellsPage() {
                         </Col>
                     </Row>
                     <BarbellsTable barbells={barbells}/>
-                    {isCartShow && <NewBarbellForm onClose={closeModalForm}/>}
+                    {isModalShown && <NewBarbellForm onClose={closeModalForm} onReceive={newBarbellHandler}/>}
                 </Col>
 
             </Col>

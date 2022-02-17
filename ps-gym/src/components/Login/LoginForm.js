@@ -2,6 +2,7 @@ import {Card, Row, Form, Col, InputGroup, Container} from "react-bootstrap";
 import {PersonFill, KeyFill} from "react-bootstrap-icons";
 import classes from "./LoginForm.module.css"
 import {useReducer, useState} from "react";
+import LoginLogo from "../../Assets/images/loginLogo.png"
 
 const emailReducer = (state, action) => {
 
@@ -79,10 +80,8 @@ function LoginForm(props) {
     return (
         <Container className={classes.center}>
             <Card className={classes.card}>
-                <Row>
-                    <Col xs={10} sm={10} md={10} lg={10} xl={10} className="text-center m-auto">
-                        <label className="fs-3 fw-bold text-white">Log to PS&GYM!</label>
-                    </Col>
+                <Row style={{height: "100px"}}>
+                    <Col xs={12} className="text-center"><img src={LoginLogo} alt="" className={classes.logo}/></Col>
                 </Row>
                 <Form className="mt-4 text-black" onSubmit={submitHandler}>
                     <Form.Group as={Col}>

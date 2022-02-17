@@ -9,7 +9,7 @@ const machinesSchema = mongoose.Schema({
     },
     name: String,
     producent: String,
-    cena: Number,
+    price: Number,
     date: {
         type: String,
         immutable: false,

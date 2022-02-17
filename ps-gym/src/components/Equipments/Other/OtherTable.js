@@ -16,6 +16,7 @@ function OtherTable(props) {
                     <th>Nazwa</th>
                     <th>Przeznaczenie</th>
                     <th>Ilość</th>
+                    <th>Cena za sztukę</th>
                     <th>Data zakupu</th>
                     <th/>
 
@@ -28,7 +29,8 @@ function OtherTable(props) {
                         <td>{item.producent}</td>
                         <td>{item.name}</td>
                         <td>{item.destination}</td>
-                        <td>{item.amount}</td>
+                        <td>{item.amount}szt.</td>
+                        <td>{item.price}zł</td>
                         <td>{item.date}</td>
                         <td>
                             <button className={classes.btnTable}>Edytuj</button>

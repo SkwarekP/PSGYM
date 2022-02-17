@@ -10,6 +10,7 @@ function LoadsPage() {
 
     const [loads, setLoads] = useState([])
     const [isCartShow, setIsCartShow] = useState(false)
+    const [isModalShown, setIsModalShown] = useState(false)
     const showModalCart = () => {
         setIsCartShow(() => true)
     }
@@ -19,11 +20,11 @@ function LoadsPage() {
     }
 
     const showModalForm = () => {
-        setIsCartShow(() => true)
+        setIsModalShown(() => true)
     }
 
     const closeModalForm = () => {
-        setIsCartShow(() => false)
+        setIsModalShown(() => false)
     }
 
     useEffect(() => {
@@ -36,6 +37,18 @@ function LoadsPage() {
             .then(res => res.json())
             .then(res => setLoads(() => res))
     }, [])
+
+    const newLoadHandler = (data) => {
+        fetch("http://localhost:5000/Loads", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setLoads((prev) => [...prev, res]))
+    }
 
     return (
         <Row>
@@ -50,7 +63,7 @@ function LoadsPage() {
                         </Col>
                     </Row>
                     <LoadsTable loads={loads}/>
-                    {isCartShow && <NewLoadsForm onClose={closeModalForm}/>}
+                    {isModalShown && <NewLoadsForm onClose={closeModalForm} onReceive={newLoadHandler}/>}
                 </Col>
 
             </Col>

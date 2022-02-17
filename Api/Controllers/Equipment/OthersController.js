@@ -16,6 +16,7 @@ exports.newOther = async (req, res) => {
         name: req.body.name,
         destination: req.body.destination,
         amount: req.body.amount,
+        price: req.body.price,
         date: req.body.date
     });
     other

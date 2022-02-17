@@ -5,7 +5,8 @@ exports.newDumbell = async (req, res) => {
         producent: req.body.producent,
         type: req.body.type,
         amount: req.body.amount,
-        weight: req.body.amount,
+        weight: req.body.weight,
+        price: req.body.price,
         date: req.body.date
     });
     dumbell
@@ -33,7 +34,7 @@ exports.getDumbells = async (req, res) => {
 }
 
 exports.removeDumbell = async (req, res) => {
-    dumbells.deleteOne({dumbellId: req.params._id})
+    dumbells.deleteOne({_id: req.params.dumbellId})
         .then(result => res.send(result))
         .catch(err => {
             res.status(500).json({

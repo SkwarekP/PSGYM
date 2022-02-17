@@ -9,6 +9,7 @@ import NewOtherForm from "./NewOtherForm";
 function OtherPage() {
     const [others, setOthers] = useState([])
     const [isCartShow, setIsCartShow] = useState(false)
+    const [isModalShown, setIsModalShown] = useState(false)
     const showModalCart = () => {
         setIsCartShow(() => true)
     }
@@ -18,10 +19,10 @@ function OtherPage() {
     }
 
     const showModalForm = () => {
-        setIsCartShow(() => true)
+        setIsModalShown(() => true)
     }
     const closeModalForm = () => {
-        setIsCartShow(() => false)
+        setIsModalShown(() => false)
     }
 
     useEffect(() => {
@@ -35,6 +36,17 @@ function OtherPage() {
             .then(res => setOthers(() => res))
     }, [])
 
+    const newOtherHandler = (data) => {
+        fetch("http://localhost:5000/Others", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setOthers((prev) => [...prev, res]))
+    }
     return (
         <Row>
             {isCartShow && <ContactCart onClose={closeModalCart}/>}
@@ -48,7 +60,7 @@ function OtherPage() {
                         </Col>
                     </Row>
                     <OtherTable others={others}/>
-                    {isCartShow && <NewOtherForm onClose={closeModalForm}/>}
+                    {isModalShown && <NewOtherForm onClose={closeModalForm} onReceive={newOtherHandler}/>}
                 </Col>
 
             </Col>

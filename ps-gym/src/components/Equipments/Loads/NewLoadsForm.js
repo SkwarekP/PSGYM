@@ -5,24 +5,31 @@ import classes from "../../Clients/RegisterClientForm.module.css";
 
 function NewLoadsForm(props) {
 
-    const [picture, setPicture] = useState(null)
     const [producent, setProducent] = useState("")
     const [type, setType] = useState("")
     const [amount, setAmount] = useState(0)
     const [weight, setWeight] = useState(0)
+    const [price, setPrice] = useState(0)
     const [date, setDate] = useState("")
 
     const newLoadsHandler = (e) => {
         e.preventDefault();
         const data = {
-            picture: picture,
             producent: producent,
             type: type,
             amount: amount,
             weight: weight,
+            price: price,
             date: date,
         }
-        console.log(data);
+        console.log(data)
+        props.onReceive(data)
+        setProducent("")
+        setType("")
+        setAmount(0)
+        setWeight(0)
+        setPrice(0)
+        setDate("")
     }
 
     return (
@@ -31,17 +38,6 @@ function NewLoadsForm(props) {
                 <form onSubmit={newLoadsHandler}>
                     <Row>
                         <Col>
-                            <FormGroup className={classes.center}>
-                                <label htmlFor="zdjecie">Zdjęcie</label>
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="zdjecie"
-                                    onChange={(event) => {
-                                        setPicture(() => event.target.files[0])
-                                    }}
-                                />
-                            </FormGroup>
                             <FormGroup className={classes.center}>
                                 <label htmlFor="producent">Producent</label>
                                 <input
@@ -55,7 +51,7 @@ function NewLoadsForm(props) {
                                 />
                             </FormGroup>
                             <FormGroup className={classes.center}>
-                                <label htmlFor="name">Typ</label>
+                                <label htmlFor="type">Typ</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -63,6 +59,18 @@ function NewLoadsForm(props) {
                                     value={type}
                                     onChange={(event) => {
                                         setType(() => event.target.value)
+                                    }}
+                                />
+                            </FormGroup>
+                            <FormGroup className={classes.center}>
+                                <label htmlFor="cena">Cena</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    name="cena"
+                                    value={price}
+                                    onChange={(event) => {
+                                        setPrice(() => +event.target.value)
                                     }}
                                 />
                             </FormGroup>

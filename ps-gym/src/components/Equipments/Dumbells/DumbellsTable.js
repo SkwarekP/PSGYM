@@ -16,6 +16,7 @@ function DumbellsTable(props) {
                     <th>Typ</th>
                     <th>Ilość</th>
                     <th>Waga</th>
+                    <th>Cena za sztukę</th>
                     <th>Data zakupu</th>
                     <th/>
 
@@ -27,8 +28,9 @@ function DumbellsTable(props) {
                         <td>{idx + 1}</td>
                         <td>{item.producent}</td>
                         <td>{item.type}</td>
-                        <td>{item.amount}</td>
-                        <td>{item.weight}</td>
+                        <td>{item.amount}szt.</td>
+                        <td>{item.weight}kg</td>
+                        <td>{item.price}zł</td>
                         <td>{item.date}</td>
                         <td>
                             <button className={classes.btnTable}>Edytuj</button>

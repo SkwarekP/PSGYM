@@ -16,6 +16,7 @@ function BarbellsTable(props) {
                     <th>Typ</th>
                     <th>Ilość</th>
                     <th>Waga</th>
+                    <th>Cena za sztukę</th>
                     <th>Data zakupu</th>
                     <th/>
 
@@ -27,8 +28,9 @@ function BarbellsTable(props) {
                         <td>{idx + 1}.</td>
                         <td>{barbell.producent}</td>
                         <td>{barbell.type}</td>
-                        <td>{barbell.amount} sztuk</td>
+                        <td>{barbell.amount}szt.</td>
                         <td>{barbell.weight}kg</td>
+                        <td>{barbell.price}zł</td>
                         <td>{barbell.date}</td>
                         <td>
                             <button className={classes.btnTable}>Edytuj</button>

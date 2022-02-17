@@ -5,25 +5,25 @@ import {useState} from "react";
 
 function NewOtherForm(props) {
 
-    const [picture, setPicture] = useState(null)
     const [producent, setProducent] = useState("")
     const [name, setName] = useState("")
     const [destination, setDestination] = useState("")
     const [amount, setAmount] = useState(1)
+    const [price, setPrice] = useState(0)
     const [date, setDate] = useState("")
 
     const newOtherHandler = (e) => {
         e.preventDefault()
 
         const data = {
-            picture: picture,
             producent: producent,
             name: name,
             destination: destination,
             amount: amount,
+            price: price,
             date: date,
         }
-        console.log(data);
+        props.onReceive(data);
     }
     return (
         <Modal onClose={props.onClose}>
@@ -31,17 +31,6 @@ function NewOtherForm(props) {
                 <form onSubmit={newOtherHandler}>
                     <Row>
                         <Col>
-                            <FormGroup className={classes.center}>
-                                <label htmlFor="zdjecie">Zdjęcie</label>
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="zdjecie"
-                                    onChange={(event) => {
-                                        setPicture(() => event.target.files[0])
-                                    }}
-                                />
-                            </FormGroup>
                             <FormGroup className={classes.center}>
                                 <label htmlFor="producent">Producent</label>
                                 <input
@@ -66,6 +55,18 @@ function NewOtherForm(props) {
                                     }}
                                 />
                             </FormGroup>
+                            <FormGroup className={classes.center}>
+                                <label htmlFor="price">Cena</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    name="price"
+                                    value={price}
+                                    onChange={(event) => {
+                                        setPrice(() => +event.target.value)
+                                    }}
+                                />
+                            </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup className={classes.center}>
@@ -76,7 +77,7 @@ function NewOtherForm(props) {
                                     name="destination"
                                     value={destination}
                                     onChange={(event) => {
-                                        setDestination(() => +event.target.value)
+                                        setDestination(() => event.target.value)
                                     }}
                                 />
                             </FormGroup>
