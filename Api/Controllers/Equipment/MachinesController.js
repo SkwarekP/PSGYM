@@ -31,6 +31,7 @@ exports.getMachines = async (req, res) => {
         })
     })
 }
+
 exports.removeMachine = async (req, res) => {
     Machines.deleteOne({machineId: req.params._id})
         .then(result => res.send(result))
