@@ -38,6 +38,13 @@ body {
     font-size: calc(4px + 6 * ((100vw - 320px) / 680));
 }
 
+.pageCalendar {
+    font-size: calc(4px + 6 * ((100vw - 320px) / 680));
+    background-color: #fff;
+    opacity: 0.97;
+
+}
+
 .clientsPage {
     font-size: calc(3px + 6 * ((100vw - 320px) / 680));
     white-space: nowrap;

@@ -1,0 +1,87 @@
+.fc-toolbar-title {
+    color: black;
+    font-family: Roboto;
+}
+
+.fc-col-header-cell-cushion {
+    color: black;
+}
+
+.fc-daygrid-day-number {
+    color: black;
+}
+
+
+.fc-scrollgrid-sync-table {
+    height: 650px !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: brown;
+    opacity: 0.6
+}
+
+.fc .fc-button-primary {
+    background-color: brown;
+    border: none;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: brown;
+    border: none;
+}
+
+.fc .fc-button-primary::after {
+    background-color: brown;
+    border: none;
+    font-size: 8px;
+}
+
+.fc-h-event .fc-event-main {
+    color: #fff;
+    background: brown;
+
+}
+
+.fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title {
+    padding: 5px;
+    font-size: 16px;
+}
+
+
+.addEventButton {
+    background: brown;
+    border: none;
+    width: auto;
+    height: auto;
+    position: absolute;
+    color: #fff;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 10px;
+    top: 17.5%;
+    left: 52%;
+}
+
+.addEventButton:hover {
+    padding: 12px;
+    font-size: large;
+}
+
+.newEventCard {
+    border-radius: 20px;
+    background-color: #CBC5C4;
+    opacity: 0.9;
+    width: auto;
+}
+
+tr {
+    /*border-width: 0.44mm;*/
+    border: 0.2mm solid #544f4f;
+}
+
+@media all and (max-width: 1440px) {
+    .fc-scrollgrid-sync-table {
+        height: 500px !important;
+    }
+}

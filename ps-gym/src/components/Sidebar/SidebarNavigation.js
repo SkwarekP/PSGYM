@@ -45,7 +45,7 @@ function SidebarNavigation() {
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/">
+                    <Link to="/Events">
                         <p className="m-auto">Wydarzenia</p>
                     </Link>
                 </li>
