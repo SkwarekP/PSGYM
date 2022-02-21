@@ -1,18 +1,21 @@
 import {Col, Row} from "react-bootstrap";
 import classes from "./SidebarLayout.module.css"
-import person from "../../Assets/images/sidebarImg.jpg"
 import SidebarNavigation from "../Sidebar/SidebarNavigation";
+import {useContext} from "react";
+import {UserContext} from "../../store/user-context";
 
 function SidebarLayout() {
+    const {user} = useContext(UserContext)
+
     return (
         <Col sm={2} className={classes.sidebarMenuContainer}>
             <div className={classes.sidebarCnt}>
                 <div className={classes.sidebarProfileContainer}>
                     <p className={classes.sidebarProfileImg}>
-                        <img src={person} alt="p"/>
+                        <img src={user.picture} alt="p"/>
                     </p>
-                    <p className={classes.sidebarYourName}>Patryk Skwara</p>
-                    <p className={classes.sidebarYourName}>Administrator</p>
+                    <p className={classes.sidebarYourName}>{user.name + " " + user.lastName}</p>
+                    <p className={classes.sidebarYourName}>{user.isAdmin ? "Administrator" : "Pracownik"}</p>
                 </div>
                 <div className={classes.line_hr}>
                     <hr/>

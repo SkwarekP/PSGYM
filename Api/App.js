@@ -6,6 +6,7 @@ const cors = require("cors")
 const env = require("dotenv")
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose")
+const fileUpload = require("express-fileupload")
 const clientsRoute = require("./Routes/Clients")
 const machinesRoute = require("./Routes/Equipment/MachinesRoute")
 const loadsRoute = require("./Routes/Equipment/LoadsRoute")
@@ -24,10 +25,14 @@ app.use(cors({
     credentials: true,
 }))
 
+
 app.use(express.json())
+app.use("/uploads", express.static("uploads"))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.json())
+
+app.set("view engine", "ejs")
 
 app.use("/", clientsRoute)
 app.use("/", machinesRoute)

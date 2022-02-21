@@ -3,14 +3,16 @@ import NavbarLayout from "../Layout/NavbarLayout";
 import SidebarLayout from "../Layout/SidebarLayout";
 import {Col, Row, Container, Card} from "react-bootstrap";
 import {useState} from "react";
-import classes from "./SettingsPage.module.css"
 import PasswordChange from "./PasswordChange";
 import EmailChange from "./EmailChange";
 import ProfilePictureChange from "./ProfilePictureChange";
+import {useContext} from "react";
+import {UserContext} from "../../store/user-context";
 
 function SettingsPage() {
 
     const [isCartShow, setIsCartShow] = useState(false);
+    const {user} = useContext(UserContext)
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -41,25 +43,26 @@ function SettingsPage() {
                                         <div className="w-100"/>
                                         <label htmlFor="fname" className="mb-2 personalData">Numer telefonu:</label>
                                         <div className="w-100"/>
-                                        <label htmlFor="fname" className="mb-2 personalData">Stanowisko:</label>
+                                        <label htmlFor="fname" className="mb-2 personalData">Rola:</label>
                                         <div className="w-100"/>
                                     </Col>
                                     <Col xs={3} lg={1} md={1}/>
                                     <Col xs={4} lg={3} className="m-3">
-                                        <label className="mb-2">Patryk</label>
+                                        <label className="mb-2">{user.name}</label>
                                         <div className="w-100"/>
-                                        <label htmlFor="fname" className="mb-2 personalData">Skwara</label>
+                                        <label htmlFor="fname" className="mb-2 personalData">{user.lastName}</label>
                                         <div className="w-100"/>
                                         <label htmlFor="fname"
-                                               className="mb-2 personalData">patryk.skwara750@gmail.com</label>
+                                               className="mb-2 personalData">{user.email}</label>
                                         <div className="w-100"/>
-                                        <label htmlFor="fname" className="mb-2 personalData">511973560</label>
+                                        <label htmlFor="fname" className="mb-2 personalData">{user.number_tel}</label>
                                         <div className="w-100"/>
-                                        <label htmlFor="fname" className="mb-2 personalData">Kierownik</label>
+                                        <label htmlFor="fname"
+                                               className="mb-2 personalData">{user.isAdmin ? "Administrator" : "Pracownik"}</label>
                                         <div className="w-100"/>
                                     </Col>
                                     <Col xs={3} lg={3} className="m-3">
-                                        <header className="text-center">Zmień zdjecie profilowe</header>
+                                        <header className="text-center fw-bold">Zmień zdjecie profilowe</header>
                                         <ProfilePictureChange/>
                                     </Col>
 

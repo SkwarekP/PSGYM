@@ -11,25 +11,29 @@ import LoadsPage from "./components/Equipments/Loads/LoadsPage";
 import DumbellsPage from "./components/Equipments/Dumbells/DumbellsPage";
 import BarbellsPage from "./components/Equipments/Barbells/BarbellsPage";
 import OtherPage from "./components/Equipments/Other/OtherPage";
+import UserContextProvider from "./store/user-context";
 
 function App() {
     return (
-        <Wrapper>
-            <Routes>
-                <Route path="/" element={<Login/>}/>
-                <Route path="/PSGYM" element={<MainPage/>}/>
-                <Route path="/Clients" element={<ClientsPage/>}/>
-                <Route path="/Equipment" element={<EquipmentPage/>}/>
-                <Route path="/Supplements" element={<SupplementsPage/>}/>
-                <Route path="/Settings" element={<SettingsPage/>}/>
-                <Route path="/Equipment/Machines" element={<MachinesPage/>}/>
-                <Route path="/Equipment/Loads" element={<LoadsPage/>}/>
-                <Route path="/Equipment/Dumbells" element={<DumbellsPage/>}/>
-                <Route path="/Equipment/Barbells" element={<BarbellsPage/>}/>
-                <Route path="/Equipment/Other" element={<OtherPage/>}/>
-            </Routes>
-        </Wrapper>
+        <UserContextProvider>
+            <Wrapper>
+                <Routes>
+                    <Route path="/" element={<Login/>}/>
+                    <Route path="/PSGYM" element={<MainPage/>}/>
+                    <Route path="/Clients" element={<ClientsPage/>}/>
+                    <Route path="/Equipment" element={<EquipmentPage/>}/>
+                    <Route path="/Supplements" element={<SupplementsPage/>}/>
+                    <Route path="/Settings" element={<SettingsPage/>}/>
+                    <Route path="/Equipment/Machines" element={<MachinesPage/>}/>
+                    <Route path="/Equipment/Loads" element={<LoadsPage/>}/>
+                    <Route path="/Equipment/Dumbells" element={<DumbellsPage/>}/>
+                    <Route path="/Equipment/Barbells" element={<BarbellsPage/>}/>
+                    <Route path="/Equipment/Other" element={<OtherPage/>}/>
+                </Routes>
+            </Wrapper>
+        </UserContextProvider>
     );
+
 }
 
 export default App;

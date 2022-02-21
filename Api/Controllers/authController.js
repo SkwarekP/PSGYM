@@ -6,6 +6,7 @@ exports.userLogin = async (req, res) => {
         .then(result => {
             const token = jwt.sign({email: result.email, password: req.body.password}, process.env.JWT_KEY)
             res.json({message: "You are login", token: token, user: result})
+            console.log("You are login!")
         })
         .catch(err => {
             res.status(401).json({

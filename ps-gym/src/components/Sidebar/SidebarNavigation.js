@@ -1,7 +1,25 @@
 import classes from "./SidebarNavigation.module.css"
 import {Link} from "react-router-dom";
+import {UserContext} from "../../store/user-context";
+import {useContext} from "react";
 
 function SidebarNavigation() {
+    const {setUser} = useContext(UserContext)
+
+    const logout = () => {
+        setUser(() => {
+            return {
+                token: localStorage.removeItem("token"),
+                name: "",
+                lastName: "",
+                email: "",
+                number_tel: 0,
+                isAdmin: false,
+                picture: "",
+            }
+        })
+        console.log("User log-out")
+    }
 
     return (
         <header>
@@ -41,7 +59,7 @@ function SidebarNavigation() {
                         <p className="m-auto">Ustawienia konta</p>
                     </Link>
                 </li>
-                <li className={classes.sidebarMenuItem}>
+                <li className={classes.sidebarMenuItem} onClick={logout}>
                     <Link to="/">
                         <p className="m-auto">Wyloguj</p>
                     </Link>

@@ -1,8 +1,11 @@
 import LoginForm from "./LoginForm";
 import {useNavigate} from "react-router-dom";
+import {useContext} from "react";
+import {UserContext} from "../../store/user-context";
 
 function Login() {
     const navigate = useNavigate();
+    const {setUser} = useContext(UserContext);
 
     const sendData = (data) => {
         fetch("http://localhost:5000/Users/Login", {
@@ -16,21 +19,33 @@ function Login() {
             .then((res) => {
                 localStorage.setItem("token", res.token)
                 let user = {
-                    name: res.name,
-                    lastName: res.lastName,
-                    email: res.email,
-                    number_tel: res.number_tel,
-                    isAdmin: res.isAdmin,
+                    _id: res.user._id,
+                    name: res.user.name,
+                    lastName: res.user.lastName,
+                    email: res.user.email,
+                    number_tel: res.user.number_tel,
+                    isAdmin: res.user.isAdmin,
+                    picture: res.user.picture,
+                    token: res.token,
                 }
+                setUser(() => user)
+                console.log(user)
+                return res
             })
-            .then(() => {
+            .then((res) => {
                 setTimeout(() => {
-                    navigate("/PSGYM")
+                    if (res.error) {
+                        console.error(res.message)
+                    } else {
+                        console.log(res.message)
+                        navigate("/PSGYM")
+                    }
 
                 }, 1000)
             })
+            .catch(err => console.error(err))
 
-        //navigate("/PSGYM")
+
     }
 
     return <LoginForm onReceive={sendData}/>

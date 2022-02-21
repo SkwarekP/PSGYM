@@ -14,6 +14,8 @@ const usersSchema = mongoose.Schema({
     picture: {
         data: Buffer,
         type: String,
+        required: false,
+        default: "http://localhost:5000/uploads\\img.png"
     },
     createdAt: {
         type: String,
