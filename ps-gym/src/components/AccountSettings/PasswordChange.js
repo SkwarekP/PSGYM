@@ -1,16 +1,11 @@
 import {
-    CardActions,
-    CardContent,
-    CardHeader,
-    TextField,
-    Card
+    CardActions, CardContent, CardHeader, TextField, Card
 } from "@mui/material";
 import {Col} from 'react-bootstrap';
 
 function PasswordChange() {
 
-    return (
-        <form>
+    return (<form>
             <Col sm={12}>
                 <Card className="cardOptions">
                     <CardHeader title={<header>Zmiana hasła</header>}/>
@@ -41,8 +36,7 @@ function PasswordChange() {
                     </CardActions>
                 </Card>
             </Col>
-        </form>
-    )
+        </form>)
 }
 
 export default PasswordChange;

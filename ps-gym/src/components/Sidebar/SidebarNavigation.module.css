@@ -24,6 +24,7 @@
 .sidebarMenuItem .active {
     background-color: brown;
     border-radius: 10px;
+    width: 170px;
 }
 
 .sidebarMenuWrapper li:not(:last-child) {
@@ -36,6 +37,10 @@
 
 .sidebarMenuWrapper .sidebarMenuItem a:hover .ikona_menu {
     margin-right: 5px;
+}
+
+svg {
+    margin-right: 10px;
 }
 
 @media screen and (max-width: 1250px) {

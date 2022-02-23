@@ -1,0 +1,23 @@
+.exit {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: brown;
+    color: white;
+    border: none;
+}
+
+.exit:hover {
+    width: 30px;
+    height: 30px;
+}
+
+.editBtn {
+    width: 125px;
+    height: 40px;
+    background: brown;
+    border-radius: 30px;
+    border: 0;
+    color: white;
+    margin: 5px;
+}

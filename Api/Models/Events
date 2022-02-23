@@ -1,0 +1,45 @@
+const mongoose = require("mongoose")
+const moment = require("moment")
+
+const eventSchema = mongoose.Schema({
+    title: {
+        type: String,
+        require: true,
+    },
+    start: {
+        type: String,
+        require: true,
+        default: () => {
+            return moment().format("YYYY-MM-DD");
+        },
+        immutable: false
+    },
+    end: {
+        type: String,
+        require: true,
+        default: () => {
+            return moment().format("YYYY-MM-DD");
+        },
+        immutable: false
+    },
+    timeStart: {
+        type: String,
+        require: true,
+    },
+    timeEndd: {
+        type: String,
+        require: true
+    },
+    worker: {
+        type: String,
+        require: false,
+        immutable: false,
+    },
+    place: {
+        type: String,
+        require: false,
+        immutable: false
+    }
+})
+
+module.exports = mongoose.model("Events", eventSchema)

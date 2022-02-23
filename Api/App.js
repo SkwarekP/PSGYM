@@ -14,6 +14,7 @@ const dumbellsRoute = require("./Routes/Equipment/DumbellsRoute")
 const barbellsRoute = require("./Routes/Equipment/BarbellsRoute")
 const othersRoute = require("./Routes/Equipment/OthersRoute")
 const usersRoute = require("./Routes/Users")
+const eventsRoute = require("./Routes/Events")
 
 env.config();
 
@@ -42,6 +43,7 @@ app.use("/", dumbellsRoute)
 app.use("/", barbellsRoute)
 app.use("/", othersRoute)
 app.use("/", usersRoute)
+app.use("/", eventsRoute)
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`))

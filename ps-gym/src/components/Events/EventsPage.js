@@ -2,21 +2,23 @@ import {Col, Row} from "react-bootstrap";
 import ContactCart from "../UI/ContactCart";
 import NavbarLayout from "../Layout/NavbarLayout";
 import SidebarLayout from "../Layout/SidebarLayout";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"
 import "./EventsPage.css"
 import NewEvent from "./NewEvent";
+import ReadDescOrEdit from "./ReadDescOrEdit";
 
 function EventsPage() {
 
     const [isCartShow, setIsCartShow] = useState(false);
     const [isModalShown, setIsModalShown] = useState(false);
+    const [isReadDescOrEdit, setIsReadDescOrEdit] = useState(false);
+    const [currentEvent, setCurrentEvent] = useState({})
     const [events, setEvents] = useState([])
     /*
         const calendarRef = useRef(null)
     */
-
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -33,12 +35,45 @@ function EventsPage() {
         setIsModalShown(() => false)
     }
 
-    const newEventHandler = (event) => {
-        console.log(event)
-        /*let calendarApi = calendarRef.current.getApi()
-        calendarApi.addEvent(event)*/
-        setEvents((prev) => [...prev, event])
+    const ReadDescOrEditClose = () => {
+        setIsReadDescOrEdit(() => false)
+    }
 
+
+    useEffect(() => {
+        fetch("http://localhost:5000/Events", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setEvents(() => res))
+    }, [])
+
+    const newEventHandler = (event) => {
+        fetch("http://localhost:5000/Events", {
+            method: "POST",
+            body: JSON.stringify(event),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setEvents((prev) => [...prev, res]))
+        setIsModalShown(() => false)
+    }
+
+    const editEventHandler = (data) => {
+        fetch(`http://localhost:5000/Events/${data.id}`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setEvents((prev) => prev.map((event) => event._id === res._id ? res : event)))
     }
 
 
@@ -59,10 +94,17 @@ function EventsPage() {
                                                 ref={calendarRef}
                         */
                         events={events}
-                        weekends={true}
+                        eventClick={(event) => {
+                            event.jsEvent.preventDefault()
+                            const currEvent = events.filter((item) => item._id === event.event._def.extendedProps._id)
+                            setCurrentEvent(currEvent)
+                            setIsReadDescOrEdit(() => true)
+                        }}
                     />
                 </div>
                 {isModalShown && <NewEvent onClose={closeModalForm} onEventAdd={newEventHandler}/>}
+                {isReadDescOrEdit && <ReadDescOrEdit onClose={ReadDescOrEditClose} currEvent={currentEvent}
+                                                     onReceive={editEventHandler}/>}
             </Col>
 
 

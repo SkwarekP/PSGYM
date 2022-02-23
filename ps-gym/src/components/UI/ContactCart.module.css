@@ -27,3 +27,17 @@ h2 {
     font-weight: 600;
     background: saddlebrown;
 }
+
+.exit {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: brown;
+    color: white;
+    border: none;
+}
+
+.exit:hover {
+    width: 30px;
+    height: 30px;
+}
