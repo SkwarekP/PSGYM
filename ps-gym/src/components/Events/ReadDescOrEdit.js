@@ -13,6 +13,7 @@ function ReadDescOrEdit(props) {
     const [timeEndd, setTimeEndd] = useState("")
     const [place, setPlace] = useState("")
     const [users, setUsers] = useState("")
+    const [messageIfDeleted, setMessageIdDeleted] = useState("")
 
     const showEditForm = () => {
         setIsEditFormShow((prev) => !prev)
@@ -57,6 +58,13 @@ function ReadDescOrEdit(props) {
             .then(res => setOrganizer(() => res[0].name + " " + res[0].lastName))
     }, [])
 
+
+    const sendIdToRemoveEvent = (e) => {
+        e.preventDefault()
+        props.onDelete(props.currEvent[0]._id)
+    }
+
+
     return (
         <Modal onClose={props.onClose}>
             <button className={classes.exit} onClick={props.onClose}>X</button>
@@ -72,6 +80,9 @@ function ReadDescOrEdit(props) {
                 </section>
                 <button className={classes.editBtn}
                         onClick={showEditForm}>{isEditFormShow ? "Schowaj" : "Edytuj"}</button>
+                <button className={classes.editBtn} onClick={sendIdToRemoveEvent}>Usuń</button>
+                {props.isDeleted &&
+                    <p style={{color: "#90EE90"}} className="mt-2 text-nowrap"> Pomyślnie usunięto wydarzenie ! </p>}
             </div>
             {isEditFormShow &&
                 <Card className="newEventCard">

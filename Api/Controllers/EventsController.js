@@ -59,3 +59,14 @@ exports.getSingleEvent = async (req, res) => {
             })
         })
 }
+
+exports.removeEvent = async (req, res) => {
+    Event.deleteOne({_id: req.params.eventId})
+        .then(result => res.send(result))
+        .catch(err => {
+            res.status(404).json({
+                message: "Not found",
+                error: err
+            })
+        })
+}

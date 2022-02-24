@@ -2,7 +2,7 @@ import {Col, Row} from "react-bootstrap";
 import ContactCart from "../UI/ContactCart";
 import NavbarLayout from "../Layout/NavbarLayout";
 import SidebarLayout from "../Layout/SidebarLayout";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"
 import "./EventsPage.css"
@@ -16,9 +16,9 @@ function EventsPage() {
     const [isReadDescOrEdit, setIsReadDescOrEdit] = useState(false);
     const [currentEvent, setCurrentEvent] = useState({})
     const [events, setEvents] = useState([])
-    /*
-        const calendarRef = useRef(null)
-    */
+    const [isDeleted, setIsDeleted] = useState(false)
+    const [messageIfDeleted, setMessageIdDeleted] = useState("")
+
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -51,6 +51,16 @@ function EventsPage() {
             .then(res => setEvents(() => res))
     }, [])
 
+    useEffect(() => {
+        const time = setTimeout(() => {
+            setIsDeleted(() => false)
+            setIsReadDescOrEdit(() => false)
+        }, 1000)
+        return () => {
+            clearTimeout(time);
+        }
+    }, [isDeleted])
+
     const newEventHandler = (event) => {
         fetch("http://localhost:5000/Events", {
             method: "POST",
@@ -76,6 +86,19 @@ function EventsPage() {
             .then(res => setEvents((prev) => prev.map((event) => event._id === res._id ? res : event)))
     }
 
+    const removeEventHandler = (id) => {
+        fetch(`http://localhost:5000/Events/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(() => setEvents((prev) => prev.filter(e => e._id !== id)))
+        setIsDeleted(() => true)
+
+    }
+
 
     return (
         <Row>
@@ -90,9 +113,6 @@ function EventsPage() {
                         initialView="dayGridMonth"
                         editable={true}
                         selectable={true}
-                        /*
-                                                ref={calendarRef}
-                        */
                         events={events}
                         eventClick={(event) => {
                             event.jsEvent.preventDefault()
@@ -104,7 +124,8 @@ function EventsPage() {
                 </div>
                 {isModalShown && <NewEvent onClose={closeModalForm} onEventAdd={newEventHandler}/>}
                 {isReadDescOrEdit && <ReadDescOrEdit onClose={ReadDescOrEditClose} currEvent={currentEvent}
-                                                     onReceive={editEventHandler}/>}
+                                                     onReceive={editEventHandler} onDelete={removeEventHandler}
+                                                     isDeleted={isDeleted}/>}
             </Col>
 
 

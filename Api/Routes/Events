@@ -5,9 +5,12 @@ const eventsController = require("../Controllers/EventsController")
 router.post("/Events", eventsController.newEvent)
 
 router.put("/Events/:eventId", eventsController.editEvent)
+
 router.get("/Events", eventsController.getEvents)
 
 router.get("/Events/:eventId", eventsController.getSingleEvent)
+
+router.delete("/Events/:eventId", eventsController.removeEvent)
 
 
 module.exports = router
