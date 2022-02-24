@@ -33,6 +33,7 @@ function EmailChange() {
                             Zatwierdź
                         </button>
                     </CardActions>
+
                 </Card>
             </Col>
         </form>

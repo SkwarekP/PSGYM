@@ -31,7 +31,6 @@ function ProfilePictureChange() {
     const changePicture = (pict) => {
         const formData = new FormData();
         formData.append("picture", pict)
-        console.log(pict)
         fetch(`http://localhost:5000/CurrentUser/${user._id}`, {
             method: "PUT",
             body: formData,
@@ -48,6 +47,7 @@ function ProfilePictureChange() {
                 setIsUpload(() => true)
                 setMessage(() => "Pomyślnie zaktualizowano zdjęcie profilowe!")
             })
+        console.log(user);
     }
 
     useEffect(() => {

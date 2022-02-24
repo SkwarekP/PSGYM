@@ -22,6 +22,19 @@ function SettingsPage() {
         setIsCartShow(() => false)
     }
 
+    const changePassword = (password) => {
+        console.log(password)
+        fetch(`http://localhost:5000/changePassword/${user._id}`, {
+            method: "PUT",
+            body: JSON.stringify(password),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: localStorage.getItem("token")
+            }
+        })
+            .then(res => console.log(res))
+    }
+
 
     return (
         <Row>
@@ -71,9 +84,9 @@ function SettingsPage() {
                         </Col>
                         <Row>
                             <Col sm={12} lg={6} md={6} xl={6}>
-                                <PasswordChange/>
+                                <PasswordChange password={changePassword}/>
                             </Col>
-                            <Col sm={12} lg={6} md={6} xl={6} className="m-lg-auto">
+                            <Col sm={12} lg={6} md={6} xl={6} className="">
                                 <EmailChange/>
                             </Col>
                         </Row>

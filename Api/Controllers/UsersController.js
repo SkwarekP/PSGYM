@@ -60,7 +60,7 @@ exports.removeUser = async (req, res) => {
 }
 
 exports.changeProfilePicture = async (req, res) => {
-    Users.findOneAndUpdate({_id: req.params.currentUserId}, {
+    Users.findOneAndUpdate({_id: req.params.currentUserId} , {
         $set: {
             picture: `http://localhost:5000/${req.file.path}`
         }
@@ -74,6 +74,7 @@ exports.changeProfilePicture = async (req, res) => {
             })
         })
 }
+
 
 
 

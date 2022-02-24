@@ -45,5 +45,8 @@ router.get("/CurrentUser", checkAuth, authController.getCurrentUser)
 
 router.put("/CurrentUser/:currentUserId", upload.single("picture"), usersController.changeProfilePicture)
 
+// change password
+router.put("/changePassword/:userId", checkAuth, authController.changePassword)
+
 
 module.exports = router;
