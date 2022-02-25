@@ -77,7 +77,9 @@
 
 tr {
     /*border-width: 0.44mm;*/
+    /*
     border: 0.2mm solid #544f4f;
+    */
 }
 
 @media all and (max-width: 1440px) {

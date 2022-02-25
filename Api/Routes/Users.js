@@ -48,5 +48,8 @@ router.put("/CurrentUser/:currentUserId", upload.single("picture"), usersControl
 // change password
 router.put("/changePassword/:userId", checkAuth, authController.changePassword)
 
+//change email
+router.put("/changeEmail/:userId", checkAuth, authController.changeEmail)
+
 
 module.exports = router;

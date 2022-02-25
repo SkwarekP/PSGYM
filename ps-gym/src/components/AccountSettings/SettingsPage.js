@@ -35,6 +35,10 @@ function SettingsPage() {
             .then(res => console.log(res))
     }
 
+    const changeEmail = (data) => {
+        console.log(data)
+    }
+
 
     return (
         <Row>
@@ -87,7 +91,7 @@ function SettingsPage() {
                                 <PasswordChange password={changePassword}/>
                             </Col>
                             <Col sm={12} lg={6} md={6} xl={6} className="">
-                                <EmailChange/>
+                                <EmailChange email={changeEmail}/>
                             </Col>
                         </Row>
                     </Row>

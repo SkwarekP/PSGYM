@@ -15,10 +15,13 @@
     transition: all 0.4s;
     white-space: nowrap;
     display: flex;
+
 }
 
 .sidebarMenuWrapper .sidebarMenuItem a:hover {
-    font-size: large;
+    font-size: 20px;
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+
 }
 
 .sidebarMenuItem .active {

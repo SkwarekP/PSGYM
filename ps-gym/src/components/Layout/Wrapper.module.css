@@ -4,4 +4,5 @@
     background-size: cover;
     font-family: Roboto;
     height: 100vh;
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
 }

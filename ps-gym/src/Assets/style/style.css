@@ -25,6 +25,11 @@ body {
     color: white;
 }
 
+.redBtn:hover {
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+
+}
+
 .pageWrapper {
     height: 83vh;
     justify-content: center;

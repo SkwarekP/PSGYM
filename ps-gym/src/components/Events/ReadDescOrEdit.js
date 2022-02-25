@@ -109,7 +109,7 @@ function ReadDescOrEdit(props) {
                                         onChange={(event) => setOrganizer(() => event.target.value)}
                                     >
                                         {users.map((worker) => (
-                                            <option>{worker.name + " " + worker.lastName}</option>
+                                            <option key={worker._id}>{worker.name + " " + worker.lastName}</option>
                                         ))}
                                     </select>
                                 </FormGroup>

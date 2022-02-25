@@ -5,7 +5,9 @@
     width: 100%;
     height: 100vh;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.65)
+    background-color: rgba(0, 0, 0, 0.65);
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+
 }
 
 .modal {
@@ -19,6 +21,8 @@
     border-radius: 25px;
     opacity: 0.5;
     animation: slide-down 300ms ease-out forwards;
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+
 }
 
 @media (min-width: 768px) {
