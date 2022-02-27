@@ -40,7 +40,6 @@ function UserContextProvider({children}) {
                     }
                     setUser(() => user)
                 });
-            console.log(user)
         } else {
             const path = "/";
             //navigate(path)

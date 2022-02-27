@@ -12,7 +12,7 @@ import {UserContext} from "../../store/user-context";
 function SettingsPage() {
 
     const [isCartShow, setIsCartShow] = useState(false);
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -37,6 +37,15 @@ function SettingsPage() {
 
     const changeEmail = (data) => {
         console.log(data)
+        fetch(`http://localhost:5000/changeEmail/${user._id}`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: localStorage.getItem("token")
+            }
+        })
+            .then(res => console.log(res))
     }
 
 

@@ -63,7 +63,7 @@ function SidebarNavigation() {
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/Supplements">
+                    <Link to="/Assortments">
                         <ShopOutlinedIcon/>
                         <p className="m-auto">Asortyment</p>
                     </Link>

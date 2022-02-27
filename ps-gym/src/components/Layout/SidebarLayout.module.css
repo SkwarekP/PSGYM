@@ -53,3 +53,10 @@ a {
     background-color: white;
     margin: 0;
 }
+
+@media only screen and (max-width: 1440px) {
+    .sidebarMenuContainer {
+        padding-top: 5px;
+    }
+
+}

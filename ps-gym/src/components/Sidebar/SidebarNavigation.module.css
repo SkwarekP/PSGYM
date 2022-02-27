@@ -6,9 +6,9 @@
 
 .sidebarMenuWrapper .sidebarMenuItem a {
     text-decoration: none;
-    font-size: calc(4px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(3px + 6 * ((100vw - 320px) / 680));
     color: white;
-    padding-left: calc(15px + 6 * ((100vw - 320px) / 680));
+    padding-left: calc(8px + 6 * ((100vw - 320px) / 680));
     padding-right: calc(15px + 6 * ((100vw - 320px) / 680));
     padding-top: 10px;
     padding-bottom: 10px;
@@ -76,5 +76,26 @@ svg {
 
     .container-fluid {
         font-size: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .sidebarMenuItem .active {
+        background-color: brown;
+        border-radius: 10px;
+        width: 140px;
+    }
+
+    .sidebarMenuWrapper .sidebarMenuItem a {
+        text-decoration: none;
+        font-size: calc(4px + 5 * ((100vw - 320px) / 680));
+        color: white;
+        padding-left: calc(5px + 6 * ((100vw - 320px) / 680));
+        padding-right: calc(15px + 6 * ((100vw - 320px) / 680));
+        padding-top: 1px;
+        padding-bottom: 7px;
+        transition: all 0.4s;
+        white-space: nowrap;
+        display: flex;
     }
 }

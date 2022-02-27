@@ -4,7 +4,7 @@ import Login from "./components/Login/Login";
 import MainPage from "./components/MainPage/MainPage";
 import ClientsPage from "./components/Clients/ClientsPage";
 import EquipmentPage from "./components/Equipments/EquipmentPage";
-import SupplementsPage from "./components/Supplements/SupplementsPage";
+import AssortmentPage from "./components/Assortment/AssortmentPage";
 import SettingsPage from "./components/AccountSettings/SettingsPage";
 import MachinesPage from "./components/Equipments/Machines/MachinesPage";
 import LoadsPage from "./components/Equipments/Loads/LoadsPage";
@@ -23,7 +23,7 @@ function App() {
                     <Route path="/PSGYM" element={<MainPage/>}/>
                     <Route path="/Clients" element={<ClientsPage/>}/>
                     <Route path="/Equipment" element={<EquipmentPage/>}/>
-                    <Route path="/Supplements" element={<SupplementsPage/>}/>
+                    <Route path="/Assortments" element={<AssortmentPage/>}/>
                     <Route path="/Settings" element={<SettingsPage/>}/>
                     <Route path="/Equipment/Machines" element={<MachinesPage/>}/>
                     <Route path="/Equipment/Loads" element={<LoadsPage/>}/>

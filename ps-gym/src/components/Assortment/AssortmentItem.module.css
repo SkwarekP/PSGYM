@@ -6,15 +6,19 @@
     border: 1px solid white;
 }
 
+.cardBd {
+    padding: 0;
+}
+
 .cardBody {
-    width: 227px;
-    height: 267px;
+    width: 250px;
+    height: auto;
     border-radius: 5px;
-    background: inherit;
+    /*background: inherit;*/
     margin-top: 50px;
     opacity: 0.9;
     outline: none;
-
+    text-align: center;
 
 }
 
@@ -30,6 +34,24 @@
     font-weight: bold;
     text-align: center;
     color: black;
+}
+
+.cardText2 {
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+.buttonSell {
+    background: brown;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 5px;
+    margin-bottom: 10px;
+
 }
 
 .cardBody:hover {

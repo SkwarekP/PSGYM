@@ -18,10 +18,11 @@ body {
 
 .redBtn {
     width: auto;
-    height: 50px;
+    height: auto;
     background: brown;
     border-radius: 10px;
     border: 0;
+    padding: 10px;
     color: white;
 }
 
@@ -31,11 +32,13 @@ body {
 }
 
 .pageWrapper {
-    height: 83vh;
+    height: 81vh;
     justify-content: center;
     display: flex;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
 
 .page {
     /*justify-content: center;
