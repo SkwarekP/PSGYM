@@ -61,7 +61,7 @@ function EventsPage() {
         }
     }, [isDeleted])
 
-    const newEventHandler = (event) => {
+    const newEventHandler = (event, organizerId) => {
         fetch("http://localhost:5000/Events", {
             method: "POST",
             body: JSON.stringify(event),
@@ -71,6 +71,17 @@ function EventsPage() {
         })
             .then(res => res.json())
             .then(res => setEvents((prev) => [...prev, res]))
+
+        fetch(`http://localhost:5000/Workers/${organizerId}/Events`, {
+            method: "PUT",
+            body: JSON.stringify(event),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => console.log(res))
+
         setIsModalShown(() => false)
     }
 

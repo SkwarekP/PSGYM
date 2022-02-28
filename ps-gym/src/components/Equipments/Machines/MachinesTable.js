@@ -3,7 +3,6 @@ import {Card, Table} from "react-bootstrap";
 
 function MachinesTable(props) {
 
-
     return (
         <Card className={classes.cardMachines}>
             <div>
@@ -32,7 +31,11 @@ function MachinesTable(props) {
                         <td>{machine.price}zł</td>
                         <td>{machine.date}</td>
                         <td>
-                            <button className={classes.btnTable}>Edytuj</button>
+                            <button className={classes.btnTable} onClick={() => {
+                                props.setTempMachine(() => machine)
+                                props.showEditModal()
+                            }}>Edytuj
+                            </button>
                         </td>
                     </tr>
                 ))}

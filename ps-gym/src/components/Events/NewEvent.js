@@ -13,9 +13,33 @@ function NewEvent(props) {
     const [timeStart, setTimeStart] = useState("")
     const [timeEndd, setTimeEndd] = useState("")
     const [place, setPlace] = useState("")
+    const [workers, setWorkers] = useState([])
+    const [worker, setWorker] = useState("")
+    const [idOrganizer, setIdOrganizer] = useState(null)
+
+    useEffect(() => {
+        fetch("http://localhost:5000/Workers", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => {
+                setWorkers(() => res)
+                setIdOrganizer(() => res[0]._id)
+                return res
+            })
+            .then(res => setWorker(() => res[0].name + " " + res[0].lastName))
+    }, [])
 
     const sendData = (e) => {
         e.preventDefault()
+
+        workers.map(item => {
+            if (item.name + " " + item.lastName === worker) return setIdOrganizer(() => item._id)
+            return 0
+        })
 
         const data = {
             title: title,
@@ -25,9 +49,10 @@ function NewEvent(props) {
             timeEndd: timeEndd,
             worker: organizer,
             place: place,
+            organizer: worker,
         }
         console.log(data)
-        props.onEventAdd(data)
+        props.onEventAdd(data, idOrganizer)
     }
 
     useEffect(() => {
@@ -107,7 +132,7 @@ function NewEvent(props) {
                                 <input
                                     type="date"
                                     className="form-control"
-                                    name="lastName"
+                                    name="end"
                                     value={end}
                                     onChange={(event) => {
                                         setEnd(() => event.target.value)
@@ -115,31 +140,42 @@ function NewEvent(props) {
                                 />
                             </FormGroup>
                             <FormGroup className={classes.center}>
-                                <label htmlFor="model">Początek wydarzenia</label>
-                                <input
-                                    type="time"
-                                    value={timeStart}
-                                    className="m-1"
-
-                                    onChange={(event) => {
-                                        setTimeStart(() => event.target.value)
-                                    }}
-                                />
+                                <label htmlFor="worker">Organizator</label>
+                                <select
+                                    className="form-control"
+                                    name="worker"
+                                    onChange={(event) => setWorker(() => event.target.value)}
+                                >
+                                    {workers.map((worker) => (
+                                        <option key={worker._id}>{worker.name + " " + worker.lastName}</option>
+                                    ))}
+                                </select>
                             </FormGroup>
-                            <FormGroup className={classes.center}>
-                                <label htmlFor="model">Koniec wydarzenia</label>
-                                <input
-                                    type="time"
-                                    value={timeEndd}
-                                    className="m-1"
-                                    onChange={(event) => {
-                                        setTimeEndd(() => event.target.value)
-                                    }}
-                                />
-                            </FormGroup>
-
-
                         </Col>
+                        <FormGroup className={classes.center}>
+                            <label htmlFor="model">Początek wydarzenia</label>
+                            <input
+                                type="time"
+                                value={timeStart}
+                                className="m-1"
+
+                                onChange={(event) => {
+                                    setTimeStart(() => event.target.value)
+                                }}
+                            />
+                        </FormGroup>
+                        <FormGroup className={classes.center}>
+                            <label htmlFor="model">Koniec wydarzenia</label>
+                            <input
+                                type="time"
+                                value={timeEndd}
+                                className="m-1"
+                                onChange={(event) => {
+                                    setTimeEndd(() => event.target.value)
+                                }}
+                            />
+                        </FormGroup>
+
                         <div className="m-3 text-center">
                             <button
                                 type="submit"

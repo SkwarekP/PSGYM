@@ -9,10 +9,11 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import ShopOutlinedIcon from '@mui/icons-material/ShopOutlined';
 import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
+import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
 import psgymSidebar from "../../Assets/images/psgymSidebar.png"
 
 function SidebarNavigation() {
-    const {setUser} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
 
     const logout = () => {
         setUser(() => {
@@ -34,7 +35,7 @@ function SidebarNavigation() {
             <ul className={classes.sidebarMenuWrapper}>
                 <li className={classes.sidebarMenuItem}>
                     <Link to="/PSGYM" className={classes.active}>
-                        <img src={psgymSidebar} style={{marginRight: "10px"}}/>
+                        <img src={psgymSidebar} style={{marginRight: "10px"}} alt=""/>
                         <p className="m-auto">PS&GYM</p>
                     </Link>
                 </li>
@@ -51,7 +52,7 @@ function SidebarNavigation() {
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/">
+                    <Link to="/Services">
                         <PhoneInTalkOutlinedIcon/>
                         <p className="m-auto">Usługi</p>
                     </Link>
@@ -68,6 +69,12 @@ function SidebarNavigation() {
                         <p className="m-auto">Asortyment</p>
                     </Link>
                 </li>
+                {user.isAdmin && <li className={classes.sidebarMenuItem}>
+                    <Link to="/Users">
+                        <GroupAddOutlinedIcon/>
+                        <p className="m-auto">Użytkownicy</p>
+                    </Link>
+                </li>}
                 <li className={classes.sidebarMenuItem}>
                     <Link to="/Settings">
                         <ManageAccountsOutlinedIcon/>

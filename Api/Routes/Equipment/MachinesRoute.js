@@ -8,4 +8,6 @@ router.post("/Machines", machineController.newMachine)
 
 router.delete("/Machines/:machineId", machineController.removeMachine)
 
+router.put("/Machines/:machineId", machineController.editMachine)
+
 module.exports = router

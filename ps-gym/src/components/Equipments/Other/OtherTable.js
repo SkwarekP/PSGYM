@@ -33,7 +33,11 @@ function OtherTable(props) {
                         <td>{item.price}zł</td>
                         <td>{item.date}</td>
                         <td>
-                            <button className={classes.btnTable}>Edytuj</button>
+                            <button className={classes.btnTable} onClick={() => {
+                                props.setTempOther(() => item)
+                                props.showEditModal()
+                            }}>Edytuj
+                            </button>
                         </td>
                     </tr>
                 ))}

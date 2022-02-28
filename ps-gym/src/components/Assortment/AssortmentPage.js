@@ -76,7 +76,7 @@ function AssortmentPage() {
             <NavbarLayout onShowContact={showModalCart}/>
             <SidebarLayout/>
             <Col xs={10} lg={10} md={10} className="pageWrapper">
-                <div style={{position: "fixed", left: "52%", marginTop: "10px"}}>
+                <div style={{position: "fixed", left: "51%", marginTop: "10px"}}>
                     <button className="redBtn" onClick={showAddItemModal}>Dodaj pozycję</button>
                 </div>
                 <AssortmentList assortment={assortment} stan={changeStanOfItem}/>

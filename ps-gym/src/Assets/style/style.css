@@ -31,6 +31,18 @@ body {
 
 }
 
+input {
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+}
+
+select {
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+}
+
+label {
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+}
+
 .pageWrapper {
     height: 81vh;
     justify-content: center;

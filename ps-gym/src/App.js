@@ -13,6 +13,8 @@ import BarbellsPage from "./components/Equipments/Barbells/BarbellsPage";
 import OtherPage from "./components/Equipments/Other/OtherPage";
 import UserContextProvider from "./store/user-context";
 import EventsPage from "./components/Events/EventsPage";
+import UsersPage from "./components/Users/UsersPage";
+import ServicePage from "./components/Services/ServicePage";
 
 function App() {
     return (
@@ -31,6 +33,8 @@ function App() {
                     <Route path="/Equipment/Barbells" element={<BarbellsPage/>}/>
                     <Route path="/Equipment/Other" element={<OtherPage/>}/>
                     <Route path="/Events" element={<EventsPage/>}/>
+                    <Route path="/Users" element={<UsersPage/>}/>
+                    <Route path="/Services" element={<ServicePage/>}/>
                 </Routes>
             </Wrapper>
         </UserContextProvider>

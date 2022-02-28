@@ -42,3 +42,20 @@ exports.removeOther = async (req, res) => {
             })
         })
 }
+
+
+exports.editOther = async (req, res) => {
+    Others.findOneAndUpdate({_id: req.params.otherId}, req.body)
+        .then(() => {
+            Others.findOne({_id: req.params.otherId})
+                .then(result => {
+                    res.send(result)
+                })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err,
+                message: "Internal server error"
+            })
+        })
+}

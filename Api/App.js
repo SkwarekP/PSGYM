@@ -6,7 +6,6 @@ const cors = require("cors")
 const env = require("dotenv")
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose")
-const fileUpload = require("express-fileupload")
 const clientsRoute = require("./Routes/Clients")
 const machinesRoute = require("./Routes/Equipment/MachinesRoute")
 const loadsRoute = require("./Routes/Equipment/LoadsRoute")
@@ -16,6 +15,7 @@ const othersRoute = require("./Routes/Equipment/OthersRoute")
 const usersRoute = require("./Routes/Users")
 const eventsRoute = require("./Routes/Events")
 const assortmentRoute = require("./Routes/Assortment")
+const workersRoute = require("./Routes/Workers")
 
 env.config();
 
@@ -46,6 +46,7 @@ app.use("/", othersRoute)
 app.use("/", usersRoute)
 app.use("/", eventsRoute)
 app.use("/", assortmentRoute)
+app.use("/", workersRoute)
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`))

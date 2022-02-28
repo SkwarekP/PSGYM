@@ -8,7 +8,8 @@ exports.newEvent = async (req, res) => {
         timeStart: req.body.timeStart,
         timeEndd: req.body.timeEndd,
         worker: req.body.worker,
-        place: req.body.place
+        place: req.body.place,
+        organizer: req.body.organizer
     })
     event
         .save()

@@ -8,4 +8,6 @@ router.post("/Loads", loadsController.newLoad)
 
 router.delete("/Loads/:loadId", loadsController.removeLoad)
 
+router.put("/Loads/:loadId", loadsController.editLoad)
+
 module.exports = router

@@ -5,12 +5,16 @@ import {Col, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import MachinesTable from "./MachinesTable";
 import NewMachinesForm from "./NewMachinesForm";
+import EditMachine from "./EditMachine";
 
 
 function MachinesPage() {
     const [isCartShow, setIsCartShow] = useState(false)
     const [isModalShown, setIsModalShown] = useState(false)
+    const [isEditModalShown, setIsEditModalShown] = useState(false)
     const [machines, setMachines] = useState([])
+    const [tempMachine, setTempMachine] = useState({})
+
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -25,6 +29,13 @@ function MachinesPage() {
     }
     const closeModalForm = () => {
         setIsModalShown(() => false)
+    }
+
+    const editModalShow = () => {
+        setIsEditModalShown(() => true)
+    }
+    const editModalClose = () => {
+        setIsEditModalShown(() => false)
     }
 
     useEffect(() => {
@@ -43,11 +54,24 @@ function MachinesPage() {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type": "application/json"
             }
         })
             .then(res => res.json())
             .then(res => setMachines((prev) => [...prev, res]))
+    }
+
+    const editMachineHandler = (data, id) => {
+        fetch(`http://localhost:5000/Machines/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setMachines((prev) => prev.map(machine => machine._id === res._id ? res : machine)))
+        setIsEditModalShown(() => false)
     }
     return (
         <Row>
@@ -61,8 +85,10 @@ function MachinesPage() {
                             <button className="redBtn text-nowrap" onClick={showModalForm}>Dodaj pozycję</button>
                         </Col>
                     </Row>
-                    <MachinesTable machines={machines}/>
+                    <MachinesTable machines={machines} showEditModal={editModalShow} setTempMachine={setTempMachine}/>
                     {isModalShown && <NewMachinesForm onClose={closeModalForm} onReceive={newMachineHandler}/>}
+                    {isEditModalShown && <EditMachine onClose={editModalClose} onReceive={editMachineHandler}
+                                                      tempMachine={tempMachine}/>}
                 </Col>
 
             </Col>

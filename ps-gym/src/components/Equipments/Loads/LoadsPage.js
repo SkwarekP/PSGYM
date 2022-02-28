@@ -5,12 +5,16 @@ import NavbarLayout from "../../Layout/NavbarLayout";
 import SidebarLayout from "../../Layout/SidebarLayout";
 import LoadsTable from "./LoadsTable";
 import NewLoadsForm from "./NewLoadsForm";
+import EditLoad from "./EditLoad";
 
 function LoadsPage() {
 
     const [loads, setLoads] = useState([])
     const [isCartShow, setIsCartShow] = useState(false)
     const [isModalShown, setIsModalShown] = useState(false)
+    const [isEditModalShown, setIsEditModalShown] = useState(false)
+    const [tempLoad, setTempLoad] = useState({})
+
     const showModalCart = () => {
         setIsCartShow(() => true)
     }
@@ -25,6 +29,14 @@ function LoadsPage() {
 
     const closeModalForm = () => {
         setIsModalShown(() => false)
+    }
+
+    const editModalShow = () => {
+        setIsEditModalShown(() => true)
+    }
+
+    const editModalClose = () => {
+        setIsEditModalShown(() => false)
     }
 
     useEffect(() => {
@@ -50,6 +62,20 @@ function LoadsPage() {
             .then(res => setLoads((prev) => [...prev, res]))
     }
 
+    const editLoadHandler = (data, id) => {
+        fetch(`http://localhost:5000/Loads/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setLoads((prev) => prev.map(load => load._id === res._id ? res : load)))
+        setIsEditModalShown(() => false)
+    }
+
+
     return (
         <Row>
             {isCartShow && <ContactCart onClose={closeModalCart}/>}
@@ -62,8 +88,10 @@ function LoadsPage() {
                             <button className="redBtn text-nowrap" onClick={showModalForm}>Dodaj pozycję</button>
                         </Col>
                     </Row>
-                    <LoadsTable loads={loads}/>
+                    <LoadsTable loads={loads} showEditModal={editModalShow} setTempLoad={setTempLoad}/>
                     {isModalShown && <NewLoadsForm onClose={closeModalForm} onReceive={newLoadHandler}/>}
+                    {isEditModalShown &&
+                        <EditLoad onClose={editModalClose} onReceive={editLoadHandler} tempLoad={tempLoad}/>}
                 </Col>
 
             </Col>

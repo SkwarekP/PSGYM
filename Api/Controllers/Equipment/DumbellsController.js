@@ -42,3 +42,19 @@ exports.removeDumbell = async (req, res) => {
             })
         })
 }
+
+exports.editDumbell = async (req, res) => {
+    dumbells.findOneAndUpdate({_id: req.params.dumbellId}, req.body)
+        .then(() => {
+            dumbells.findOne({_id: req.params.dumbellId})
+                .then(result => {
+                    res.send(result)
+                })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err,
+                message: "Internal server error"
+            })
+        })
+}

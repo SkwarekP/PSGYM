@@ -5,12 +5,16 @@ import NavbarLayout from "../../Layout/NavbarLayout";
 import SidebarLayout from "../../Layout/SidebarLayout";
 import BarbellsTable from "./BarbellsTable";
 import NewBarbellForm from "./NewBarbellForm";
+import EditBarbell from "./EditBarbell";
 
 function BarbellsPage() {
 
     const [isCartShow, setIsCartShow] = useState(false)
     const [isModalShown, setIsModalShown] = useState(false)
     const [barbells, setBarbells] = useState([])
+    const [isEditModalShown, setIsEditModalShown] = useState(false)
+    const [tempBarbell, setTempBarbell] = useState({})
+
     const showModalCart = () => {
         setIsCartShow(() => true)
     }
@@ -24,6 +28,13 @@ function BarbellsPage() {
     }
     const closeModalForm = () => {
         setIsModalShown(() => false)
+    }
+    const editModalShow = () => {
+        setIsEditModalShown(() => true)
+    }
+
+    const editModalClose = () => {
+        setIsEditModalShown(() => false)
     }
 
     useEffect(() => {
@@ -49,6 +60,20 @@ function BarbellsPage() {
             .then(res => setBarbells((prev) => [...prev, res]))
     }
 
+    const editBarbellHandler = (data, id) => {
+        fetch(`http://localhost:5000/Barbells/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setBarbells((prev) => prev.map(barbell => barbell._id === res._id ? res : barbell)))
+        setIsEditModalShown(() => false)
+    }
+
+
     return (
         <Row>
             {isCartShow && <ContactCart onClose={closeModalCart}/>}
@@ -61,8 +86,10 @@ function BarbellsPage() {
                             <button className="redBtn text-nowrap" onClick={showModalForm}>Dodaj pozycję</button>
                         </Col>
                     </Row>
-                    <BarbellsTable barbells={barbells}/>
+                    <BarbellsTable barbells={barbells} showEditModal={editModalShow} setTempBarbell={setTempBarbell}/>
                     {isModalShown && <NewBarbellForm onClose={closeModalForm} onReceive={newBarbellHandler}/>}
+                    {isEditModalShown && <EditBarbell onClose={editModalClose} onReceive={editBarbellHandler}
+                                                      tempBarbell={tempBarbell}/>}
                 </Col>
 
             </Col>

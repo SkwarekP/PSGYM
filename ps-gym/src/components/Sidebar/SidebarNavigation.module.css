@@ -6,12 +6,12 @@
 
 .sidebarMenuWrapper .sidebarMenuItem a {
     text-decoration: none;
-    font-size: calc(3px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(2px + 6 * ((100vw - 320px) / 680));
     color: white;
     padding-left: calc(8px + 6 * ((100vw - 320px) / 680));
     padding-right: calc(15px + 6 * ((100vw - 320px) / 680));
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     transition: all 0.4s;
     white-space: nowrap;
     display: flex;
@@ -93,7 +93,7 @@ svg {
         padding-left: calc(5px + 6 * ((100vw - 320px) / 680));
         padding-right: calc(15px + 6 * ((100vw - 320px) / 680));
         padding-top: 1px;
-        padding-bottom: 7px;
+        padding-bottom: 1px;
         transition: all 0.4s;
         white-space: nowrap;
         display: flex;

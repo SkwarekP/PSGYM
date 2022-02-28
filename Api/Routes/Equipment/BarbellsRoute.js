@@ -8,4 +8,6 @@ router.post("/Barbells", barbellsController.newBarbell)
 
 router.delete("/Barbells/:barbellId", barbellsController.removeBarbell)
 
+router.put("/Barbells/:barbellId", barbellsController.editBarbell)
+
 module.exports = router;

@@ -44,3 +44,19 @@ exports.removeLoad = async (req, res) => {
             })
         })
 }
+
+exports.editLoad = async (req, res) => {
+    loads.findOneAndUpdate({_id: req.params.loadId}, req.body)
+        .then(() => {
+            loads.findOne({_id: req.params.loadId})
+                .then(result => {
+                    res.send(result)
+                })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err,
+                message: "Internal server error"
+            })
+        })
+}

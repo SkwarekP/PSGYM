@@ -41,3 +41,19 @@ exports.removeMachine = async (req, res) => {
             })
         })
 }
+
+exports.editMachine = async (req, res) => {
+    Machines.findOneAndUpdate({_id: req.params.machineId}, req.body)
+        .then(() => {
+            Machines.findOne({_id: req.params.machineId})
+                .then(result => {
+                    res.send(result)
+                })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err,
+                message: "Internal server error"
+            })
+        })
+}

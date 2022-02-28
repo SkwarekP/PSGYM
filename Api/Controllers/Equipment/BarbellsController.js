@@ -42,3 +42,19 @@ exports.removeBarbell = async (req, res) => {
             })
         })
 }
+
+exports.editBarbell = async (req, res) => {
+    Barbells.findOneAndUpdate({_id: req.params.barbellId}, req.body)
+        .then(() => {
+            Barbells.findOne({_id: req.params.barbellId})
+                .then(result => {
+                    res.send(result)
+                })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err,
+                message: "Internal server error"
+            })
+        })
+}

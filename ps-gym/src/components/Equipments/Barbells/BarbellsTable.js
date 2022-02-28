@@ -33,7 +33,11 @@ function BarbellsTable(props) {
                         <td>{barbell.price}zł</td>
                         <td>{barbell.date}</td>
                         <td>
-                            <button className={classes.btnTable}>Edytuj</button>
+                            <button className={classes.btnTable} onClick={() => {
+                                props.setTempBarbell(() => barbell)
+                                props.showEditModal()
+                            }}>Edytuj
+                            </button>
                         </td>
                     </tr>
                 ))}
