@@ -26,7 +26,6 @@ function RegisterClientForm(props) {
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [address, setAddress] = useState("");
-    const [remainingTime, setRemainingTime] = useState(30);
     const [isFormValid, setIsFormValid] = useState(false);
     const [correctMessage, setCorrectMessage] = useState("");
     const [isCorrect, setIsCorrect] = useState(false);
@@ -63,7 +62,6 @@ function RegisterClientForm(props) {
             email: emailState.value,
             number_tel: nrTelState.value,
             number_magnetic_cart: (Math.random() * (10000 - 1000 + 1) + 1000).toFixed(),
-            remaining_time: remainingTime,
             active: true,
         }
 
@@ -150,22 +148,6 @@ function RegisterClientForm(props) {
                                     }}
                                 />
                                 {!nrTelState.isValid && <p style={{color: "red"}}>{nrTelState.message}</p>}
-                            </FormGroup>
-                            <FormGroup className={classes.center}>
-                                <label htmlFor="model">Czas karnetu</label>
-                                <select
-                                    className="form-control"
-                                    name="karnet"
-                                    value={remainingTime}
-                                    onChange={(event) => {
-                                        setRemainingTime(() => +event.target.value)
-                                    }}
-                                >
-                                    <option>28</option>
-                                    <option>29</option>
-                                    <option>30</option>
-                                    <option>31</option>
-                                </select>
                             </FormGroup>
                         </Col>
                         <div className="m-3 text-center">

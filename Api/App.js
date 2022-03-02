@@ -16,6 +16,7 @@ const usersRoute = require("./Routes/Users")
 const eventsRoute = require("./Routes/Events")
 const assortmentRoute = require("./Routes/Assortment")
 const workersRoute = require("./Routes/Workers")
+const clientsInfoRoute = require("./Routes/ClientsInfo")
 
 env.config();
 
@@ -47,6 +48,7 @@ app.use("/", usersRoute)
 app.use("/", eventsRoute)
 app.use("/", assortmentRoute)
 app.use("/", workersRoute)
+app.use("/", clientsInfoRoute)
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`))

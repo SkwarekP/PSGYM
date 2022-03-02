@@ -18,16 +18,29 @@
 
 }
 
-.sidebarMenuWrapper .sidebarMenuItem a:hover {
-    font-size: 20px;
+
+.sidebarMenuWrapper .sidebarMenuItem:hover {
     cursor: url("../../Assets/images/kursor.png"), auto !important;
-
-}
-
-.sidebarMenuItem .active {
     background-color: brown;
     border-radius: 10px;
     width: 170px;
+}
+
+.sidebarMenuWrapper .sidebarMenuItem:visited {
+    background-color: brown;
+    border-radius: 10px;
+    width: 170px;
+}
+
+.sidebarMenuItem .active {
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
+    background-color: brown;
+    border-radius: 10px;
+    width: 170px;
+}
+
+.sidebarMenuItem a:hover {
+    cursor: url("../../Assets/images/kursor.png"), auto !important;
 }
 
 .sidebarMenuWrapper li:not(:last-child) {
@@ -38,13 +51,14 @@
     margin-top: 25px;
 }
 
-.sidebarMenuWrapper .sidebarMenuItem a:hover .ikona_menu {
+/*.sidebarMenuWrapper .sidebarMenuItem a:hover .ikona_menu {
     margin-right: 5px;
-}
+}*/
 
 svg {
     margin-right: 10px;
 }
+
 
 @media screen and (max-width: 1250px) {
     .sidebarMenuWrapper .sidebarMenuItem {

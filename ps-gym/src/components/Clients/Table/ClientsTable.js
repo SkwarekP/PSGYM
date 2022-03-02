@@ -17,7 +17,7 @@ function ClientsTable(props) {
                     <th>Adres e-mail</th>
                     <th>Numer telefonu</th>
                     <th>Numer karty magnetycznej</th>
-                    <th>Pozostały czas karnetu</th>
+                    <th>Karnet</th>
                     <th>Aktywny</th>
                     <th>Data utworzenia</th>
                     <th/>
@@ -40,8 +40,17 @@ function ClientsTable(props) {
                             <td>{item.address}</td>
                             <td>{item.email}</td>
                             <td>{item.number_tel}</td>
-                            <td>{item.number_magnetic_cart}</td>
-                            <td>{item.remaining_time} dni</td>
+                            <td>
+                                {item.number_magnetic_cart}
+                                <button className={classes.btnTable}>Historia wizyt</button>
+                            </td>
+                            <td>
+                                <button className={classes.btnTable} onClick={() => {
+                                    props.isKarnetShowTrigger()
+                                    props.checkKarnet(item._id)
+                                }}>Sprawdź
+                                </button>
+                            </td>
                             <td>{item.active ? "Tak" : "Nie"}</td>
                             <td>{item.createdAt}</td>
                             <td>

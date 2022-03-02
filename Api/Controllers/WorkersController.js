@@ -10,6 +10,14 @@ exports.getWorkers = async (req, res) => {
         })
 }
 
+exports.getWorkerByName = async (req, res) => {
+    Workers.findOne({name: req.params.name})
+        .then(result => res.send(result))
+        .catch(err => {
+            res.status(404).json({message: "Not found"})
+        })
+}
+
 exports.newWorker = async (req, res) => {
     const worker = new Workers({
         name: req.body.name,
@@ -54,4 +62,24 @@ exports.editEventWorker = async (req, res) => {
             return result
         })
         .then(result => res.send(result))
+}
+
+exports.removeWorkerEvent = async (req, res) => {
+    Workers.findOne({_id: req.params.workerId})
+        .then(result => {
+            result.events.pop()
+            result.save()
+            return result
+        })
+        .then(result => res.send(result))
+}
+
+exports.removeTest = async (req, res) => {
+    Workers.findOneAndUpdate({_id: req.params.workerId}, {
+        $pull: {
+            events: {title: req.body.title}
+        }
+    })
+        .then(() => Workers.findOne({_id: req.params.workerId})
+            .then(result => res.send(result)))
 }

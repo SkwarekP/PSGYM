@@ -9,7 +9,7 @@ exports.newClient = async (req, res) => {
         email: req.body.email,
         number_tel: req.body.number_tel,
         number_magnetic_cart: req.body.number_magnetic_cart,
-        remaining_time: req.body.remaining_time,
+        clientInfo: req.body.clientInfo,
         active: req.body.active,
     });
     client

@@ -17,8 +17,6 @@ function EventsPage() {
     const [currentEvent, setCurrentEvent] = useState({})
     const [events, setEvents] = useState([])
     const [isDeleted, setIsDeleted] = useState(false)
-    const [messageIfDeleted, setMessageIdDeleted] = useState("")
-
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -80,7 +78,6 @@ function EventsPage() {
             }
         })
             .then(res => res.json())
-            .then(res => console.log(res))
 
         setIsModalShown(() => false)
     }
@@ -97,7 +94,7 @@ function EventsPage() {
             .then(res => setEvents((prev) => prev.map((event) => event._id === res._id ? res : event)))
     }
 
-    const removeEventHandler = (id) => {
+    const removeEventHandler = (id, idCurrWorker, title) => {
         fetch(`http://localhost:5000/Events/${id}`, {
             method: "DELETE",
             headers: {
@@ -106,6 +103,16 @@ function EventsPage() {
         })
             .then(res => res.json())
             .then(() => setEvents((prev) => prev.filter(e => e._id !== id)))
+
+        fetch(`http://localhost:5000/Workers/${idCurrWorker}/Events`, {
+            method: "DELETE",
+            body: JSON.stringify({title: title}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+
         setIsDeleted(() => true)
 
     }

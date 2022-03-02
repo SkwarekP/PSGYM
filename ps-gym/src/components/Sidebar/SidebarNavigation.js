@@ -14,7 +14,6 @@ import psgymSidebar from "../../Assets/images/psgymSidebar.png"
 
 function SidebarNavigation() {
     const {user, setUser} = useContext(UserContext)
-
     const logout = () => {
         setUser(() => {
             return {
@@ -30,10 +29,11 @@ function SidebarNavigation() {
         console.log("User log-out")
     }
 
+
     return (
         <header>
             <ul className={classes.sidebarMenuWrapper}>
-                <li className={classes.sidebarMenuItem}>
+                <li className={`${classes.sidebarMenuItem}`}>
                     <Link to="/PSGYM" className={classes.active}>
                         <img src={psgymSidebar} style={{marginRight: "10px"}} alt=""/>
                         <p className="m-auto">PS&GYM</p>
@@ -54,7 +54,7 @@ function SidebarNavigation() {
                 <li className={classes.sidebarMenuItem}>
                     <Link to="/Services">
                         <PhoneInTalkOutlinedIcon/>
-                        <p className="m-auto">Usługi</p>
+                        <p className="m-auto">Pracownicy</p>
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>

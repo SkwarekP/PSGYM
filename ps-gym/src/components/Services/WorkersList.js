@@ -3,8 +3,8 @@ import WorkersItem from "./WorkersItem";
 
 function WorkersList(props) {
 
-    const onSendIndividualWorker = (id) => {
-        props.onReceiveIndividualWorkerId(id)
+    const onSendIndividualWorkerEvents = (events) => {
+        props.onReceiveIndividualWorkerEvents(events)
     }
 
     return (
@@ -22,7 +22,7 @@ function WorkersList(props) {
                         function={item.function}
                         events={item.events}
                         onShowWorkerInfo={props.onShowWorkerInfo}
-                        individualWorker={onSendIndividualWorker}
+                        individualWorker={onSendIndividualWorkerEvents}
                     />
                 ))}
             </CardGroup>

@@ -5,7 +5,7 @@ function WorkersItem(props) {
 
     const triggerModal = () => {
         props.onShowWorkerInfo()
-        props.individualWorker(props.id)
+        props.individualWorker(props.events)
     }
 
     return (

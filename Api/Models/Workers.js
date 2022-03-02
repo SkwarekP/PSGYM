@@ -16,7 +16,7 @@ const workersSchema = mongoose.Schema({
     events: [
         {
             title: String,
-            date: String,
+            start: String,
             end: String,
             timeStart: String,
             timeEndd: String,

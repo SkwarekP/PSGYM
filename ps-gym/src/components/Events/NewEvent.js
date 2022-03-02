@@ -30,16 +30,11 @@ function NewEvent(props) {
                 setIdOrganizer(() => res[0]._id)
                 return res
             })
-            .then(res => setWorker(() => res[0].name + " " + res[0].lastName))
+            .then(res => setWorker(() => res[0].name))
     }, [])
 
     const sendData = (e) => {
         e.preventDefault()
-
-        workers.map(item => {
-            if (item.name + " " + item.lastName === worker) return setIdOrganizer(() => item._id)
-            return 0
-        })
 
         const data = {
             title: title,
@@ -144,10 +139,13 @@ function NewEvent(props) {
                                 <select
                                     className="form-control"
                                     name="worker"
-                                    onChange={(event) => setWorker(() => event.target.value)}
+                                    onChange={(event) => {
+                                        setWorker(() => event.target.value)
+                                        workers.map(item => item.name === event.target.value ? setIdOrganizer(() => item._id) : item._id)
+                                    }}
                                 >
                                     {workers.map((worker) => (
-                                        <option key={worker._id}>{worker.name + " " + worker.lastName}</option>
+                                        <option key={worker._id}>{worker.name}</option>
                                     ))}
                                 </select>
                             </FormGroup>

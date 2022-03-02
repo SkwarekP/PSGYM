@@ -1,6 +1,6 @@
 import LoginForm from "./LoginForm";
 import {useNavigate} from "react-router-dom";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {UserContext} from "../../store/user-context";
 
 function Login() {
@@ -43,12 +43,15 @@ function Login() {
 
                 }, 1000)
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+            })
 
 
     }
 
     return <LoginForm onReceive={sendData}/>
+
 
 }
 

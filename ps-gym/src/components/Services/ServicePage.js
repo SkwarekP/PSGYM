@@ -11,7 +11,7 @@ function ServicePage() {
 
     const [isCartShow, setIsCartShow] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [tempId, setTempId] = useState(null)
+    const [individualEvents, setIndividualEvents] = useState(null)
     const [workers, setWorkers] = useState([])
 
 
@@ -42,8 +42,8 @@ function ServicePage() {
         setIsModalOpen(() => false)
     }
 
-    const individualWorker = (id) => {
-        setTempId(() => id)
+    const individualWorkerEvents = (events) => {
+        setIndividualEvents(() => events)
     }
 
     return (
@@ -54,10 +54,10 @@ function ServicePage() {
             <Col xs={10} lg={10} className="pageWrapper">
                 <Col lg={11} className="clientsPage">
                     <WorkersList workers={workers} onShowWorkerInfo={showWorkerInfo}
-                                 onReceiveIndividualWorkerId={individualWorker}/>
+                                 onReceiveIndividualWorkerEvents={individualWorkerEvents}/>
 
                 </Col>
-                {isModalOpen && <WorkerInfo onClose={closeWorkerInfo} tempId={tempId}/>}
+                {isModalOpen && <WorkerInfo onClose={closeWorkerInfo} individualEvents={individualEvents}/>}
             </Col>
 
         </Row>

@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
+const {Schema} = require("mongoose");
+
 const clientSchema = mongoose.Schema({
     name: String,
     lastName: String,
@@ -10,7 +12,7 @@ const clientSchema = mongoose.Schema({
     },
     number_tel: Number,
     number_magnetic_cart: Number,
-    remaining_time: Number,
+    clientInfo: Schema.Types.ObjectId,
     active: {
         type: Boolean,
         default: true,

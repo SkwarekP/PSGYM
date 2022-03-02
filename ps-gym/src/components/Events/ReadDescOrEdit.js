@@ -13,7 +13,7 @@ function ReadDescOrEdit(props) {
     const [timeEndd, setTimeEndd] = useState("")
     const [place, setPlace] = useState("")
     const [users, setUsers] = useState("")
-    const [messageIfDeleted, setMessageIdDeleted] = useState("")
+    const [idCurrWorker, setIdCurrWorker] = useState(null)
 
     const showEditForm = () => {
         setIsEditFormShow((prev) => !prev)
@@ -44,6 +44,7 @@ function ReadDescOrEdit(props) {
         setEnd(() => props.currEvent[0].end)
         setTimeStart(() => props.currEvent[0].timeStart)
         setTimeEndd(() => props.currEvent[0].timeEndd)
+
         fetch("http://localhost:5000/Users", {
             method: "GET",
             headers: {
@@ -56,12 +57,22 @@ function ReadDescOrEdit(props) {
                 return res
             })
             .then(res => setOrganizer(() => res[0].name + " " + res[0].lastName))
+
+        fetch(`http://localhost:5000/Workers/${props.currEvent[0].organizer}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setIdCurrWorker(() => res._id))
+
     }, [])
 
 
     const sendIdToRemoveEvent = (e) => {
         e.preventDefault()
-        props.onDelete(props.currEvent[0]._id)
+        props.onDelete(props.currEvent[0]._id, idCurrWorker, props.currEvent[0].title)
     }
 
 
@@ -76,6 +87,7 @@ function ReadDescOrEdit(props) {
                     <p>Data końca
                         wydarzenia: {props.currEvent[0].end ? props.currEvent[0].end + " " + props.currEvent[0].timeEndd : props.currEvent[0].start + " " + props.currEvent[0].timeEndd} </p>
                     <p>Pracownik rejestrujący wydarzenie: {props.currEvent[0].worker}</p>
+                    <p>Pracownik organizujący wydarzenie: {props.currEvent[0].organizer}</p>
                     <p>Sala: {props.currEvent[0].place}</p>
                 </section>
                 <button className={classes.editBtn}

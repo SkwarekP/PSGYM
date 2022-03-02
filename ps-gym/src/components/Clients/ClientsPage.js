@@ -7,11 +7,16 @@ import Searchbox from "../UI/Searchbox";
 import ClientsTable from "./Table/ClientsTable";
 import RegisterClientForm from "./RegisterClientForm";
 import EditClient from "./EditClient";
+import KarnetInfo from "./KarnetInfo";
 
 function ClientsPage() {
     const [isCartShow, setIsCartShow] = useState(false)
     const [isFormShow, setIsFormShow] = useState(false);
     const [isEditModalFormShow, setIsEditModalFormShow] = useState(false);
+
+    const [isKarnetModalShow, setIsKarnetModalShow] = useState(false)
+    const [idCurrClient, setIdCurrClient] = useState(null)
+
     const [searchUsers, setSearchUsers] = useState("");
     const [clients, setClients] = useState([])
     const [tempClient, setTempClient] = useState({})
@@ -27,7 +32,6 @@ function ClientsPage() {
     const showForm = () => {
         setIsFormShow(() => true);
     }
-
     const closeForm = () => {
         setIsFormShow(() => false);
     }
@@ -38,21 +42,41 @@ function ClientsPage() {
         setIsEditModalFormShow(() => false)
     }
 
+    const showKarnetModal = () => {
+        setIsKarnetModalShow(() => true)
+    }
+
+    const closeKarnetModal = () => {
+        setIsKarnetModalShow(() => false)
+    }
+
+    const checkKarnet = (id) => {
+        setIdCurrClient(() => id)
+    }
+
     const searchByEmail = data => {
         setSearchUsers(() => data);
     }
 
     const newClientAdd = (data) => {
-        fetch("http://localhost:5000/clients", {
+        fetch(`http://localhost:5000/clientsInfo/Add`, {
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify({}),
             headers: {
-                Accept: "application/form-data",
                 "Content-Type": "application/json"
             }
         })
             .then(res => res.json())
-            .then((response) => setClients((prev) => [...prev, response]))
+            .then(res => fetch("http://localhost:5000/clients", {
+                method: "POST",
+                body: JSON.stringify({...data, clientInfo: res._id}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }))
+            .then(res => res.json())
+            .then((response) => setClients((prev) => [...prev, response])
+            )
 
         setIsFormShow(() => false);
     }
@@ -105,10 +129,13 @@ function ClientsPage() {
                         onShowEdit={showEditModalForm}
                         onClose={closeEditModalForm}
                         setTempClient={setTempClient}
+                        checkKarnet={checkKarnet}
+                        isKarnetShowTrigger={showKarnetModal}
                     />
                     {isFormShow && <RegisterClientForm onClose={closeForm} onRegistered={newClientAdd}/>}
                     {isEditModalFormShow && <EditClient client={tempClient} onClose={closeEditModalForm}
                                                         editedClientData={editClientHandler}/>}
+                    {isKarnetModalShow && <KarnetInfo onClose={closeKarnetModal} idCurrClient={idCurrClient}/>}
                 </Col>
 
             </Col>

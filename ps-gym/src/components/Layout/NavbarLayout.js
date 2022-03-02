@@ -7,10 +7,8 @@ function NavbarLayout(props) {
         <Container>
             <Row>
                 <Col md={12} lg={12} className={classes.navbarTop}>
-                    <Col sm={2} className="text-white text-center">
-                        <Button className={classes.wrapperContact} style={{width: "auto"}}>
-                            Powiadomienia
-                        </Button>
+                    <Col sm={2}>
+
                     </Col>
                     <Col sm={8} className="text-white text-center">
                         <img src={Logo} alt="" className="mt-4"/>
