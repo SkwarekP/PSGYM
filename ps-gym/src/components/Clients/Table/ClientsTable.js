@@ -42,7 +42,14 @@ function ClientsTable(props) {
                             <td>{item.number_tel}</td>
                             <td>
                                 {item.number_magnetic_cart}
-                                <button className={classes.btnTable}>Historia wizyt</button>
+                                <button className={classes.btnTable} onClick={() => {
+                                    props.isHistoryShowTrigger()
+                                    props.getIdToHistory(item._id)
+
+                                }}>Historia wizyt
+                                </button>
+                                <button className={classes.btnTable}>In</button>
+                                <button className={classes.btnTable}>Out</button>
                             </td>
                             <td>
                                 <button className={classes.btnTable} onClick={() => {

@@ -65,7 +65,7 @@ function KarnetInfo(props) {
                         style={{padding: "5px", marginLeft: "10px"}}
                         onClick={() => setIsUpdate((prev) => !prev)}
                     >
-                        Aktualizuj
+                        {isUpdate ? "Schowaj" : "Aktualizuj"}
                     </button>
                 </p>
                 < br/>

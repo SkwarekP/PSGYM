@@ -26,7 +26,6 @@ function EditClient(props) {
     const [lastName, setLastName] = useState("");
     const [address, setAddress] = useState("");
     const [nrMagneticCard, setNrMagneticCard] = useState(0);
-    const [remainingTime, setRemainingTime] = useState(30);
     const [correctMessage, setCorrectMessage] = useState("");
     const [isEditFormValid, setIsEditFormValid] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
@@ -57,7 +56,6 @@ function EditClient(props) {
         setLastName(() => props.client.lastName)
         setAddress(() => props.client.address)
         setNrMagneticCard(() => props.client.number_magnetic_cart)
-        setRemainingTime(() => props.client.remaining_time)
         setIsActive(() => props.client.active)
     }, [])
 
@@ -76,7 +74,6 @@ function EditClient(props) {
             email: emailState.value,
             number_tel: nrTelState.value,
             number_magnetic_cart: nrMagneticCard,
-            remaining_time: remainingTime,
             active: active,
         }
         if (isEditFormValid) {
@@ -175,23 +172,6 @@ function EditClient(props) {
                                         setNrMagneticCard(() => +event.target.value)
                                     }}
                                 />
-                                <p/>
-                            </FormGroup>
-                            <FormGroup className={classes.center}>
-                                <label htmlFor="model">Czas karnetu</label>
-                                <select
-                                    className="form-control"
-                                    name="karnet"
-                                    defaultValue={props.client.remaining_time}
-                                    onChange={(event) => {
-                                        setRemainingTime(() => +event.target.value)
-                                    }}
-                                >
-                                    <option>28</option>
-                                    <option>29</option>
-                                    <option>30</option>
-                                    <option>31</option>
-                                </select>
                                 <p/>
                             </FormGroup>
                             <FormGroup className={classes.center}>

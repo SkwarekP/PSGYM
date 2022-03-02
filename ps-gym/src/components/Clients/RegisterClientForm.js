@@ -109,6 +109,21 @@ function RegisterClientForm(props) {
                                 <p/>
                             </FormGroup>
                             <FormGroup className={classes.center}>
+                                <label htmlFor="model">Numer telefonu</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    name="nrTel"
+                                    value={nrTelState.value}
+                                    onChange={(event) => {
+                                        dispatchNrTel({type: "TEL", val: event.target.value})
+                                    }}
+                                />
+                                {!nrTelState.isValid && <p style={{color: "red"}}>{nrTelState.message}</p>}
+                            </FormGroup>
+                        </Col>
+                        <Col>
+                            <FormGroup className={classes.center}>
                                 <label htmlFor="model">Adres</label>
                                 <input
                                     type="text"
@@ -121,8 +136,6 @@ function RegisterClientForm(props) {
                                 />
                                 <p/>
                             </FormGroup>
-                        </Col>
-                        <Col>
                             <FormGroup className={classes.center}>
                                 <label htmlFor="model">Adres e-mail</label>
                                 <input
@@ -135,19 +148,6 @@ function RegisterClientForm(props) {
                                     }}
                                 />
                                 {!emailState.isValid && <p style={{color: "red"}}>{emailState.message}</p>}
-                            </FormGroup>
-                            <FormGroup className={classes.center}>
-                                <label htmlFor="model">Numer telefonu</label>
-                                <input
-                                    type="number"
-                                    className="form-control"
-                                    name="nrTel"
-                                    value={nrTelState.value}
-                                    onChange={(event) => {
-                                        dispatchNrTel({type: "TEL", val: event.target.value})
-                                    }}
-                                />
-                                {!nrTelState.isValid && <p style={{color: "red"}}>{nrTelState.message}</p>}
                             </FormGroup>
                         </Col>
                         <div className="m-3 text-center">

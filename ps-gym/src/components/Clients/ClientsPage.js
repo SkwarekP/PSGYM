@@ -8,6 +8,7 @@ import ClientsTable from "./Table/ClientsTable";
 import RegisterClientForm from "./RegisterClientForm";
 import EditClient from "./EditClient";
 import KarnetInfo from "./KarnetInfo";
+import HistoryInfo from "./HistoryInfo";
 
 function ClientsPage() {
     const [isCartShow, setIsCartShow] = useState(false)
@@ -16,6 +17,8 @@ function ClientsPage() {
 
     const [isKarnetModalShow, setIsKarnetModalShow] = useState(false)
     const [idCurrClient, setIdCurrClient] = useState(null)
+
+    const [isHistoryShow, setIsHistoryShow] = useState(false)
 
     const [searchUsers, setSearchUsers] = useState("");
     const [clients, setClients] = useState([])
@@ -51,6 +54,18 @@ function ClientsPage() {
     }
 
     const checkKarnet = (id) => {
+        setIdCurrClient(() => id)
+    }
+
+    const showHistoryModal = () => {
+        setIsHistoryShow(() => true)
+    }
+
+    const closeHistoryModal = () => {
+        setIsHistoryShow(() => false)
+    }
+
+    const getIdToHistory = (id) => {
         setIdCurrClient(() => id)
     }
 
@@ -130,12 +145,15 @@ function ClientsPage() {
                         onClose={closeEditModalForm}
                         setTempClient={setTempClient}
                         checkKarnet={checkKarnet}
+                        getIdToHistory={getIdToHistory}
                         isKarnetShowTrigger={showKarnetModal}
+                        isHistoryShowTrigger={showHistoryModal}
                     />
                     {isFormShow && <RegisterClientForm onClose={closeForm} onRegistered={newClientAdd}/>}
                     {isEditModalFormShow && <EditClient client={tempClient} onClose={closeEditModalForm}
                                                         editedClientData={editClientHandler}/>}
                     {isKarnetModalShow && <KarnetInfo onClose={closeKarnetModal} idCurrClient={idCurrClient}/>}
+                    {isHistoryShow && <HistoryInfo onClose={closeHistoryModal} idCurrClient={idCurrClient}/>}
                 </Col>
 
             </Col>
