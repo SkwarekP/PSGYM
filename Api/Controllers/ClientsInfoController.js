@@ -1,4 +1,5 @@
 const clientsInfo = require("../Models/ClientsInfo")
+const moment = require("moment")
 
 exports.newClientsInfo = async (req, res) => {
     const clientInfo = new clientsInfo({
@@ -52,4 +53,33 @@ exports.removeClientInfo = async (req, res) => {
         .catch(err => {
             res.status(404).json({message: "not found"})
         })
+}
+
+exports.pushWhenIn = async (req, res) => {
+    clientsInfo.findOneAndUpdate({_id: req.params.clientInfo}, {
+        $push: {
+            whenIn: moment().format("YYYY-MM-DD HH:mm")
+        }
+    })
+        .then(() => clientsInfo.findOne({_id: req.params.clientInfo})
+            .then(result => res.send(result)))
+}
+
+exports.pushWhenOut = async (req, res) => {
+    clientsInfo.findOneAndUpdate({_id: req.params.clientInfo}, {
+        $push: {
+            whenOut: moment().format("YYYY-MM-DD HH:mm")
+        }
+    })
+        .then(() => clientsInfo.findOne({_id: req.params.clientInfo})
+            .then(result => res.send(result)))
+}
+
+exports.removeWhenOutRecord = async (req, res) => {
+    clientsInfo.findOneAndUpdate({_id: req.params.clientInfo}, {
+        $pull: {
+            whenOut: req.body.whenOut
+        }
+    })
+        .then(result => res.send(result))
 }

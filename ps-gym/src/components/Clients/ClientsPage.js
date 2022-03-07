@@ -1,4 +1,5 @@
 import {Col, Row} from "react-bootstrap";
+import Moment from 'react-moment';
 import ContactCart from "../UI/ContactCart";
 import NavbarLayout from "../Layout/NavbarLayout";
 import SidebarLayout from "../Layout/SidebarLayout";
@@ -23,6 +24,7 @@ function ClientsPage() {
     const [searchUsers, setSearchUsers] = useState("");
     const [clients, setClients] = useState([])
     const [tempClient, setTempClient] = useState({})
+
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -97,7 +99,7 @@ function ClientsPage() {
     }
 
     const editClientHandler = data => {
-        fetch(`http://localhost:5000/clients/${data._id}`, {
+        fetch(`http://localhost:5000/clients/${data._id}/Edit`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -111,7 +113,71 @@ function ClientsPage() {
             })
     }
 
+    const updateWhenIn = id => {
+
+        fetch(`http://localhost:5000/clients/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => fetch(`http://localhost:5000/clientsInfo/Edit/${res.clientInfo}/whenIn`, {
+                method: "PUT",
+                body: JSON.stringify({}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }))
+            .then(res => res.json())
+    }
+
+    const updateWhenOut = (id) => {
+        fetch(`http://localhost:5000/clients/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => fetch(`http://localhost:5000/clientsInfo/Edit/${res.clientInfo}/whenOut`, {
+                method: "PUT",
+                body: JSON.stringify({}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }))
+            .then(res => res.json())
+    }
+
+    const updateWhenInFlag = (id) => {
+        fetch(`http://localhost:5000/clients/${id}/Edit`, {
+            method: "PUT",
+            body: JSON.stringify({isClientIn: false}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setClients((prev) => prev.map((item) => item._id === res._id ? res : item)))
+
+    }
+
+    const updateWhenOutFlag = (id) => {
+
+        fetch(`http://localhost:5000/clients/${id}/Edit`, {
+            method: "PUT",
+            body: JSON.stringify({isClientIn: true}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => setClients((prev) => prev.map((item) => item._id === res._id ? res : item)))
+    }
+
     useEffect(() => {
+        console.log("fetching")
         fetch("http://localhost:5000/clients", {
             method: "GET",
             headers: {
@@ -148,6 +214,10 @@ function ClientsPage() {
                         getIdToHistory={getIdToHistory}
                         isKarnetShowTrigger={showKarnetModal}
                         isHistoryShowTrigger={showHistoryModal}
+                        getIdToUpdateWhenIn={updateWhenIn}
+                        getIdToUpdateWhenOut={updateWhenOut}
+                        updateWhenInFlag={updateWhenInFlag}
+                        updateWhenOutFlag={updateWhenOutFlag}
                     />
                     {isFormShow && <RegisterClientForm onClose={closeForm} onRegistered={newClientAdd}/>}
                     {isEditModalFormShow && <EditClient client={tempClient} onClose={closeEditModalForm}

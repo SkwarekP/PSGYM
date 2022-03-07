@@ -13,6 +13,10 @@ const clientSchema = mongoose.Schema({
     number_tel: Number,
     number_magnetic_cart: Number,
     clientInfo: Schema.Types.ObjectId,
+    isClientIn: {
+        type: Boolean,
+        default: true
+    },
     active: {
         type: Boolean,
         default: true,

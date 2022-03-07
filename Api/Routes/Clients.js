@@ -8,7 +8,7 @@ router.get("/clients/:clientId", ClientController.getSingleClient);
 
 router.post("/clients", ClientController.newClient);
 
-router.put("/clients/:clientId", ClientController.editClient)
+router.put("/clients/:clientId/Edit", ClientController.editClient)
 
 router.delete("/clients/:clientId", ClientController.clientDelete);
 

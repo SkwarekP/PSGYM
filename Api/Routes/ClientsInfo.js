@@ -12,5 +12,10 @@ router.post("/clientsInfo/Add", clientsInfo.newClientsInfo);
 
 router.put("/clientsInfo/Edit/:clientInfo", clientsInfo.editClientInfo)
 
+router.put("/clientsInfo/Edit/:clientInfo/whenIn", clientsInfo.pushWhenIn)
+
+router.put("/clientsInfo/Edit/:clientInfo/whenOut", clientsInfo.pushWhenOut)
+
+router.put("/clientsInfo/Edit/:clientInfo/whenOut/pull", clientsInfo.removeWhenOutRecord)
 
 module.exports = router;

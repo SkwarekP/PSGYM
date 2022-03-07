@@ -12,10 +12,7 @@ router.delete("/Workers/:workerId", WorkersController.removeWorker)
 
 router.put("/Workers/:workerId/Events", WorkersController.editEventWorker)
 
-router.delete("/Workers/:workerId/Events", WorkersController.removeTest)
+router.delete("/Workers/:workerId/Events", WorkersController.removeEvent)
 
-/*
-router.delete("/Workers/Test/:workerId", WorkersController.removeTest)
-*/
 
 module.exports = router;

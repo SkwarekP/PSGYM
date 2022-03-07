@@ -64,17 +64,8 @@ exports.editEventWorker = async (req, res) => {
         .then(result => res.send(result))
 }
 
-exports.removeWorkerEvent = async (req, res) => {
-    Workers.findOne({_id: req.params.workerId})
-        .then(result => {
-            result.events.pop()
-            result.save()
-            return result
-        })
-        .then(result => res.send(result))
-}
 
-exports.removeTest = async (req, res) => {
+exports.removeEvent = async (req, res) => {
     Workers.findOneAndUpdate({_id: req.params.workerId}, {
         $pull: {
             events: {title: req.body.title}

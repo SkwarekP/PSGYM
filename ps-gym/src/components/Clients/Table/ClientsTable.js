@@ -46,10 +46,25 @@ function ClientsTable(props) {
                                     props.isHistoryShowTrigger()
                                     props.getIdToHistory(item._id)
 
-                                }}>Historia wizyt
+                                }}>Przegląd
                                 </button>
-                                <button className={classes.btnTable}>In</button>
-                                <button className={classes.btnTable}>Out</button>
+                                <button className={classes.btnTable}
+                                        disabled={!item.isClientIn}
+                                        style={{
+                                            background: "green"
+                                        }}
+                                        onClick={() => {
+                                            props.getIdToUpdateWhenIn(item._id)
+                                            props.updateWhenInFlag(item._id)
+                                        }}>W siłowni
+                                </button>
+                                <button className={classes.btnTable}
+                                        disabled={item.isClientIn}
+                                        onClick={(e) => {
+                                            props.getIdToUpdateWhenOut(item._id)
+                                            props.updateWhenOutFlag(item._id)
+                                        }}>poza siłownią
+                                </button>
                             </td>
                             <td>
                                 <button className={classes.btnTable} onClick={() => {
