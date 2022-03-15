@@ -10,8 +10,8 @@
     color: white;
     padding-left: calc(8px + 6 * ((100vw - 320px) / 680));
     padding-right: calc(15px + 6 * ((100vw - 320px) / 680));
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     transition: all 0.4s;
     white-space: nowrap;
     display: flex;

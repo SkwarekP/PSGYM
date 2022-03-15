@@ -1,6 +1,6 @@
 import LoginForm from "./LoginForm";
 import {useNavigate} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {UserContext} from "../../store/user-context";
 
 function Login() {
@@ -12,12 +12,12 @@ function Login() {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                "Content-Type": "application/json"
-            }
+                "Content-Type": "application/json",
+            },
         })
             .then((res) => res.json())
             .then((res) => {
-                localStorage.setItem("token", res.token)
+                localStorage.setItem("token", res.token);
                 let user = {
                     _id: res.user._id,
                     name: res.user.name,
@@ -27,32 +27,27 @@ function Login() {
                     isAdmin: res.user.isAdmin,
                     picture: res.user.picture,
                     token: res.token,
-                }
-                setUser(() => user)
-                console.log(user)
-                return res
+                };
+                setUser(() => user);
+                console.log(user);
+                return res;
             })
             .then((res) => {
                 setTimeout(() => {
                     if (res.error) {
-                        console.error(res.message)
+                        console.error(res.message);
                     } else {
-                        console.log(res.message)
-                        navigate("/PSGYM")
+                        console.log(res.message);
+                        navigate("/Clients");
                     }
-
-                }, 1000)
+                }, 1000);
             })
-            .catch(err => {
-                console.error(err)
-            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
 
-
-    }
-
-    return <LoginForm onReceive={sendData}/>
-
-
+    return <LoginForm onReceive={sendData}/>;
 }
 
 export default Login;

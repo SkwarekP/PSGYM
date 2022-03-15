@@ -10,7 +10,6 @@ import ShopOutlinedIcon from '@mui/icons-material/ShopOutlined';
 import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
-import psgymSidebar from "../../Assets/images/psgymSidebar.png"
 
 function SidebarNavigation() {
     const {user, setUser} = useContext(UserContext)
@@ -33,14 +32,8 @@ function SidebarNavigation() {
     return (
         <header>
             <ul className={classes.sidebarMenuWrapper}>
-                <li className={`${classes.sidebarMenuItem}`}>
-                    <Link to="/PSGYM" className={classes.active}>
-                        <img src={psgymSidebar} style={{marginRight: "10px"}} alt=""/>
-                        <p className="m-auto">PS&GYM</p>
-                    </Link>
-                </li>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/Clients">
+                    <Link to="/Clients" className={classes.active}>
                         <PeopleAltOutlinedIcon/>
                         <p className="m-auto">Klienci</p>
                     </Link>

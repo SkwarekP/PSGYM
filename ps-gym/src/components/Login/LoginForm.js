@@ -86,7 +86,7 @@ function LoginForm(props) {
                 <Form className="mt-4 text-black" onSubmit={submitHandler}>
                     <Form.Group as={Col}>
                         <Form.Label className="fs-4 text-white" htmlFor="email">
-                            Email Address
+                            Adres e-mail
                         </Form.Label>
                         <InputGroup>
                             <InputGroup.Text>
@@ -108,7 +108,7 @@ function LoginForm(props) {
                     </Form.Group>
                     <Form.Group as={Col} className="ml-2">
                         <Form.Label className="fs-5 mt-2 text-white" htmlFor="password">
-                            Password
+                            Hasło
                         </Form.Label>
                         <InputGroup>
                             <InputGroup.Text>
@@ -130,7 +130,7 @@ function LoginForm(props) {
                     </Form.Group>
                     <Form.Group controlId="Button" className="text-center">
                         <button type="submit" className={` mt-4 ${classes.btnLog} `}>
-                            Log in
+                            Zaloguj
                         </button>
                         {isFormValid && <p style={{color: "#90EE90"}} className="mt-2">{formValidMessage} </p>}
                     </Form.Group>

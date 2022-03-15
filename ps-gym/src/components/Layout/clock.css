@@ -1,0 +1,17 @@
+.react-clock__mark__body {
+    position: absolute;
+    background-color: white !important;
+    transform: translateX(-50%);
+}
+
+.react-clock__hand__body {
+    position: absolute;
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+.react-clock__second-hand__body {
+    background-color: red;
+}
+
+

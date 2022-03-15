@@ -1,3 +1,4 @@
+/*
 import NavbarLayout from "../Layout/NavbarLayout";
 import {Card, Col, Row} from "react-bootstrap";
 import SidebarLayout from "../Layout/SidebarLayout";
@@ -16,7 +17,7 @@ function MainPage() {
         setIsCartShow(() => false)
     }
 
-    /*useEffect(() => {
+    /!*useEffect(() => {
         fetch("http://localhost:5000/Clients", {
             method: "GET",
             headers: {
@@ -27,7 +28,7 @@ function MainPage() {
             .then(data => {
                 setClients(data)
             })
-    }, [])*/
+    }, [])*!/
 
 
     return (
@@ -52,4 +53,4 @@ function MainPage() {
     )
 }
 
-export default MainPage;
+export default MainPage*/

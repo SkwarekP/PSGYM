@@ -12,7 +12,7 @@ exports.userLogin = async (req, res) => {
         .then(result => {
             console.log(result)
             if (result) {
-                console.log("You are login!")
+                console.log("You are logged in!")
                 const token = jwt.sign({email: user.email, password: req.body.password}, process.env.JWT_KEY)
                 res.json({message: "You are login", token: token, user: user})
             } else {
