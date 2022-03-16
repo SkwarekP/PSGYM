@@ -33,7 +33,7 @@ function SidebarNavigation() {
         <header>
             <ul className={classes.sidebarMenuWrapper}>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/Clients" className={classes.active}>
+                    <Link to="/Clients">
                         <PeopleAltOutlinedIcon/>
                         <p className="m-auto">Klienci</p>
                     </Link>
@@ -51,7 +51,7 @@ function SidebarNavigation() {
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/Events">
+                    <Link to="/Events" className={classes.active}>
                         <EventNoteOutlined/>
                         <p className="m-auto">Wydarzenia</p>
                     </Link>

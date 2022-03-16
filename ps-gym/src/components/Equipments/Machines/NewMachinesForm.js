@@ -98,7 +98,7 @@ function NewMachinesForm(props) {
                                 className="redBtn"
                                 style={{width: "100px"}}
                             >
-                                Zarejestruj
+                                Zatwierdź
                             </button>
                             <button className="redBtn"
                                     type="button"
