@@ -5,12 +5,16 @@ import {useReducer, useState} from "react";
 import LoginLogo from "../../Assets/images/loginLogo.png"
 
 const emailReducer = (state, action) => {
-
-    if (action.type === "EmptyAfterClick") return {value: "", isValid: false, validMessage: "Pole nie moze byc puste!"}
-
-
-    if (action.val === "") return {value: "", isValid: false, validMessage: ""}
-
+    if (action.type === "EmptyAfterClick") {
+        return {
+            value: "", isValid: false, validMessage: "Pole nie moze byc puste!"
+        }
+    }
+    if (action.val === "") {
+        return {
+            value: "", isValid: false, validMessage: ""
+        }
+    }
     if (action.val !== "") {
         return {
             value: action.val,
@@ -18,17 +22,20 @@ const emailReducer = (state, action) => {
             validMessage: "Adres e-mail musi zawierać znak specjalny @ i ."
         }
     }
-
 }
 
 const passwordReducer = (state, action) => {
-
     const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>?]+/;
-
-    if (action.type === "EmptyAfterClick") return {value: "", isValid: false, validMessage: "Pole nie moze byc puste!"}
-
-    if (action.val === "") return {value: "", isValid: false, validMessage: ""}
-
+    if (action.type === "EmptyAfterClick") {
+        return {
+            value: "", isValid: false, validMessage: "Pole nie moze byc puste!"
+        }
+    }
+    if (action.val === "") {
+        return {
+            value: "", isValid: false, validMessage: ""
+        }
+    }
     if (action.val !== "") {
         return {
             value: action.val,
@@ -36,7 +43,6 @@ const passwordReducer = (state, action) => {
             validMessage: "Hasło musi zawierać przynajmniej jeden znak specjalny lub jest zbyt krótkie"
         }
     }
-
 }
 
 function LoginForm(props) {
@@ -74,7 +80,6 @@ function LoginForm(props) {
             dispatchPassword({type: "EmptyAfterClick"})
             setIsFormValid(() => false)
         }
-
     }
 
     return (

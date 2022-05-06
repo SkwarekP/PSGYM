@@ -28,7 +28,6 @@ function SidebarNavigation() {
         console.log("User log-out")
     }
 
-
     return (
         <header>
             <ul className={classes.sidebarMenuWrapper}>
@@ -51,7 +50,7 @@ function SidebarNavigation() {
                     </Link>
                 </li>
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/Events" className={classes.active}>
+                    <Link to="/Events">
                         <EventNoteOutlined/>
                         <p className="m-auto">Wydarzenia</p>
                     </Link>
@@ -69,7 +68,7 @@ function SidebarNavigation() {
                     </Link>
                 </li>}
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/Settings">
+                    <Link to="/Settings" className={classes.active}>
                         <ManageAccountsOutlinedIcon/>
                         <p className="m-auto">Ustawienia</p>
                     </Link>

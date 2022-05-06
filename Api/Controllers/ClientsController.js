@@ -1,6 +1,4 @@
 const Client = require("../Models/Clients");
-const moment = require("moment");
-
 
 exports.newClient = async (req, res) => {
     const client = new Client({

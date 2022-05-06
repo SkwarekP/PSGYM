@@ -21,7 +21,8 @@ const clientsInfoRoute = require("./Routes/ClientsInfo")
 env.config();
 
 
-mongoose.connect(`mongodb+srv://Skwarek:${process.env.MONGO_PASSWORD}@psgym.uafix.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://Skwarek:${process.env.MONGO_PASSWORD}
+@psgym.uafix.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     () => console.log("Connected to Database"))
 
 app.use(cors({

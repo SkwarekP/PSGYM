@@ -94,7 +94,6 @@ function ClientsPage() {
             .then(res => res.json())
             .then((response) => setClients((prev) => [...prev, response])
             )
-
         setIsFormShow(() => false);
     }
 

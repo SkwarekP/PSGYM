@@ -79,7 +79,6 @@ function ProfilePictureChange() {
                 />
             </label>
             {isUpload && <p style={{color: "#90EE90"}} className="mt-2 text-nowrap">{message} </p>}
-
         </>
     )
 }

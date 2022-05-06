@@ -40,7 +40,6 @@ function App() {
             </Wrapper>
         </UserContextProvider>
     );
-
 }
 
 export default App;
