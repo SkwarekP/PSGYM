@@ -6,6 +6,7 @@ import SidebarLayout from "../../Layout/SidebarLayout";
 import DumbellsTable from "./DumbellsTable";
 import NewDumbellsForm from "./NewDumbellsForm";
 import EditDumbell from "./EditDumbell";
+import useGet from "../../../hooks/useGet";
 
 function DumbellsPage() {
     const [isCartShow, setIsCartShow] = useState(false)
@@ -13,6 +14,8 @@ function DumbellsPage() {
     const [dumbells, setDumbells] = useState([])
     const [isEditModalShown, setIsEditModalShown] = useState(false)
     const [tempDumbell, setTempDumbell] = useState({})
+    const fetchDumbells = useGet("http://localhost:5000/Dumbells")
+
     const showModalCart = () => {
         setIsCartShow(() => true)
     }
@@ -37,15 +40,8 @@ function DumbellsPage() {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/Dumbells", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(res => setDumbells(() => res))
-    }, [])
+        setDumbells(() => fetchDumbells)
+    }, [fetchDumbells])
 
     const newDumbellHandler = (data) => {
         fetch("http://localhost:5000/Dumbells", {

@@ -6,6 +6,7 @@ import SidebarLayout from "../../Layout/SidebarLayout";
 import LoadsTable from "./LoadsTable";
 import NewLoadsForm from "./NewLoadsForm";
 import EditLoad from "./EditLoad";
+import useGet from "../../../hooks/useGet";
 
 function LoadsPage() {
 
@@ -14,6 +15,7 @@ function LoadsPage() {
     const [isModalShown, setIsModalShown] = useState(false)
     const [isEditModalShown, setIsEditModalShown] = useState(false)
     const [tempLoad, setTempLoad] = useState({})
+    const fetchLoads = useGet("http://localhost:5000/Loads")
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -40,15 +42,8 @@ function LoadsPage() {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/Loads", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(res => setLoads(() => res))
-    }, [])
+        setLoads(() => fetchLoads)
+    }, [fetchLoads])
 
     const newLoadHandler = (data) => {
         fetch("http://localhost:5000/Loads", {

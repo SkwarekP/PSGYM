@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import MachinesTable from "./MachinesTable";
 import NewMachinesForm from "./NewMachinesForm";
 import EditMachine from "./EditMachine";
+import useGet from "../../../hooks/useGet";
 
 
 function MachinesPage() {
@@ -14,6 +15,7 @@ function MachinesPage() {
     const [isEditModalShown, setIsEditModalShown] = useState(false)
     const [machines, setMachines] = useState([])
     const [tempMachine, setTempMachine] = useState({})
+    const fetchMachines = useGet("http://localhost:5000/Machines")
 
 
     const showModalCart = () => {
@@ -39,15 +41,8 @@ function MachinesPage() {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/Machines", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(res => setMachines(() => res))
-    }, [])
+        setMachines(() => fetchMachines)
+    }, [fetchMachines])
 
     const newMachineHandler = (data) => {
         fetch("http://localhost:5000/Machines", {

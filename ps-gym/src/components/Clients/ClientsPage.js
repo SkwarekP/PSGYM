@@ -1,15 +1,16 @@
 import {Col, Row} from "react-bootstrap";
-import Moment from 'react-moment';
 import ContactCart from "../UI/ContactCart";
 import NavbarLayout from "../Layout/NavbarLayout";
 import SidebarLayout from "../Layout/SidebarLayout";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import Searchbox from "../UI/Searchbox";
 import ClientsTable from "./Table/ClientsTable";
 import RegisterClientForm from "./RegisterClientForm";
 import EditClient from "./EditClient";
 import KarnetInfo from "./KarnetInfo";
 import HistoryInfo from "./HistoryInfo";
+import useGet from "../../hooks/useGet";
+import useHttp from "../../hooks/useHttp";
 
 function ClientsPage() {
     const [isCartShow, setIsCartShow] = useState(false)
@@ -24,6 +25,27 @@ function ClientsPage() {
     const [searchUsers, setSearchUsers] = useState("");
     const [clients, setClients] = useState([])
     const [tempClient, setTempClient] = useState({})
+
+    const {isLoading, error, sendRequest: fetchClients} = useHttp();
+
+    useEffect(() => {
+        const transformData = (taskObj) => {
+            console.log(taskObj)
+            setClients(() => taskObj);
+        }
+
+        fetchClients({url: "http://localhost:5000/clients"}, transformData);
+    }, [fetchClients])
+
+
+    /*
+        const fetchClients = useGet("http://localhost:5000/clients");
+    */
+
+    /*useEffect(() => {
+        console.log("fetch clients:", fetchClients);
+        setClients(() => fetchClients);
+    }, [fetchClients])*/
 
 
     const showModalCart = () => {
@@ -175,7 +197,8 @@ function ClientsPage() {
             .then(res => setClients((prev) => prev.map((item) => item._id === res._id ? res : item)))
     }
 
-    useEffect(() => {
+
+    /*useEffect(() => {
         console.log("fetching")
         fetch("http://localhost:5000/clients", {
             method: "GET",
@@ -185,7 +208,7 @@ function ClientsPage() {
         })
             .then(res => res.json())
             .then(data => setClients(() => data))
-    }, [])
+    }, [])*/
 
 
     return (

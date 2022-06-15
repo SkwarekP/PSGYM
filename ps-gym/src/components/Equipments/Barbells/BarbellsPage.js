@@ -6,6 +6,7 @@ import SidebarLayout from "../../Layout/SidebarLayout";
 import BarbellsTable from "./BarbellsTable";
 import NewBarbellForm from "./NewBarbellForm";
 import EditBarbell from "./EditBarbell";
+import useGet from "../../../hooks/useGet";
 
 function BarbellsPage() {
 
@@ -14,6 +15,7 @@ function BarbellsPage() {
     const [barbells, setBarbells] = useState([])
     const [isEditModalShown, setIsEditModalShown] = useState(false)
     const [tempBarbell, setTempBarbell] = useState({})
+    const fetchBarbells = useGet("http://localhost:5000/Barbells");
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -38,15 +40,8 @@ function BarbellsPage() {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/Barbells", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(res => setBarbells(() => res))
-    }, [])
+        setBarbells(() => fetchBarbells)
+    }, [fetchBarbells])
 
     const newBarbellHandler = (data) => {
         fetch("http://localhost:5000/Barbells", {
@@ -91,9 +86,7 @@ function BarbellsPage() {
                     {isEditModalShown && <EditBarbell onClose={editModalClose} onReceive={editBarbellHandler}
                                                       tempBarbell={tempBarbell}/>}
                 </Col>
-
             </Col>
-
         </Row>
     )
 }

@@ -5,6 +5,7 @@ import {Col, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import UsersTable from "./UsersTable";
 import AddUserForm from "./AddUserForm";
+import useGet from "../../hooks/useGet";
 
 function UsersPage() {
 
@@ -13,7 +14,13 @@ function UsersPage() {
     const [isCartShow, setIsCartShow] = useState(false)
     const [isAddModalShow, setIsAddModalShow] = useState(false)
 
+    const fetchUsers = useGet("http://localhost:5000/Users");
+
     useEffect(() => {
+        setUsers(() => fetchUsers);
+    }, [fetchUsers])
+
+    /*useEffect(() => {
         fetch(`http://localhost:5000/Users`, {
             method: "GET",
             headers: {
@@ -22,7 +29,7 @@ function UsersPage() {
         })
             .then(res => res.json())
             .then(res => setUsers(res))
-    }, [])
+    }, [])*/
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -54,6 +61,29 @@ function UsersPage() {
         setIsAddModalShow(() => false)
     }
 
+    /*const xmlexampleGet = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:5000/Users", true);
+
+        xhr.onload = () => {
+            const data = JSON.parse(xhr.response);
+            console.log(xhr.response);
+            console.log(data);
+            setTestUsers(data);
+        }
+        xhr.send();
+
+    }*/
+
+    /*const axiosexampleGet = () => {
+        axios.get("http://localhost:5000/Users", {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => setTestUsers2(res.data))
+            .catch(err => console.log(err))
+    }*/
 
     return (
         <Row>
@@ -71,7 +101,6 @@ function UsersPage() {
                     </Row>
                     <UsersTable users={users}/>
                     {isAddModalShow && <AddUserForm onClose={addCloseModal} onReceive={addWorkerHandler}/>}
-
                 </Col>
 
             </Col>

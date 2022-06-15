@@ -5,12 +5,14 @@ import {Col, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import AssortmentList from "./AssortmentList";
 import NewItem from "./NewItem";
+import useGet from "../../hooks/useGet";
 
 function AssortmentPage() {
 
     const [isCartShow, setIsCartShow] = useState(false)
     const [isAddItemModalShow, setIsAddItemModalShow] = useState(false)
     const [assortment, setAssortment] = useState([])
+    const fetchAssortments = useGet("http://localhost:5000/assortment")
 
     const showModalCart = () => {
         setIsCartShow(() => true)
@@ -28,14 +30,8 @@ function AssortmentPage() {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/assortment", {
-            method: "GET", headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(res => setAssortment(() => res))
-    }, [])
+        setAssortment(() => fetchAssortments)
+    }, [fetchAssortments])
 
 
     const changeStanOfItem = (stan) => {

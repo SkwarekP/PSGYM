@@ -6,6 +6,7 @@ import SidebarLayout from "../../Layout/SidebarLayout";
 import OtherTable from "./OtherTable";
 import NewOtherForm from "./NewOtherForm";
 import EditOther from "./EditOther";
+import useGet from "../../../hooks/useGet";
 
 function OtherPage() {
     const [others, setOthers] = useState([])
@@ -13,6 +14,8 @@ function OtherPage() {
     const [isModalShown, setIsModalShown] = useState(false)
     const [isEditModalShown, setIsEditModalShown] = useState(false)
     const [tempOther, setTempOther] = useState({})
+    const fetchOthers = useGet("http://localhost:5000/Others")
+
     const showModalCart = () => {
         setIsCartShow(() => true)
     }
@@ -36,15 +39,8 @@ function OtherPage() {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/Others", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(res => setOthers(() => res))
-    }, [])
+        setOthers(() => fetchOthers)
+    }, [fetchOthers])
 
     const newOtherHandler = (data) => {
         fetch("http://localhost:5000/Others", {

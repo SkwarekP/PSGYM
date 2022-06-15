@@ -68,7 +68,7 @@ function SidebarNavigation() {
                     </Link>
                 </li>}
                 <li className={classes.sidebarMenuItem}>
-                    <Link to="/Settings" className={classes.active}>
+                    <Link to="/Settings">
                         <ManageAccountsOutlinedIcon/>
                         <p className="m-auto">Ustawienia</p>
                     </Link>
